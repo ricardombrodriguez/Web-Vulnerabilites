@@ -38,6 +38,11 @@ body {
 	font-smoothing: antialiased;
 }
 
+#inner {
+	width: 50%;
+	margin: 0 auto;
+}
+
 h1,
 h2,
 h3,
@@ -176,8 +181,8 @@ ol {
 	color: #ffffff;
 	font-weight: 800;
 	text-transform: uppercase;
-	display: inline-block;
-	padding: 13px 30px 12px;
+	align-items: center;
+	padding-right: 100px;
 	background: #7fad39;
 	border: none;
 }
