@@ -1,9 +1,11 @@
 # Projeto Agência de viagens
 
 ## Vulnerabilidades
-* login
-* pesquisa
-* Comentários
+* CWE-79 (Cross-site Scripting)
+* CWE-89 (SQL Injection)
+* CWE-259 (Use of Hard-coded Password)
+* CWE-321 (Use of Hard-coded Cryptographic Key)
+* CWE-362 (Race Condition)
 
 ## SQL
 
