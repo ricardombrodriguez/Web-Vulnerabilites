@@ -7,7 +7,7 @@
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ogani | Template</title>
+    <title>Spoton</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -33,7 +35,7 @@
     <div class="humberger__menu__overlay"></div>
     <div class="humberger__menu__wrapper">
         <div class="humberger__menu__logo">
-            <a href="#"><img src="img/logo.png" height="30px" width="100px" alt=""></a>
+            <a href="#"><img src="img/logo.png" alt=""></a>
         </div>
         <div class="humberger__menu__cart">
             <ul>
@@ -58,17 +60,7 @@
         </div>
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
-                <li class="active"><a href="./index.html">Home</a></li>
                 <li><a href="./index.html">Shop</a></li>
-                <li><a href="#">Pages</a>
-                    <ul class="header__menu__dropdown">
-                        <li><a href="./shop-details.html">Shop Details</a></li>
-                        <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                        <li><a href="./checkout.html">Check Out</a></li>
-                        <li><a href="./blog-details.html">Blog Details</a></li>
-                    </ul>
-                </li>
-                <li><a href="./blog.html">Blog</a></li>
                 <li><a href="./contact.html">Contact</a></li>
             </ul>
         </nav>
@@ -93,15 +85,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
-                    <div class="header__logo">
+                    <div class="header__logo" >
                         <a href="./index.html"><img src="img/logo.png" height="60px" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <nav class="header__menu">
                         <ul>
-                            <li><a href="./index.html">Shop</a></li>
-                            <li class="active"><a href="./contact.html">Contact</a></li>
+                            <li class="active"><a href="./index.html">Shop</a></li>
+                            <li><a href="./contact.html">Contact</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -122,33 +114,122 @@
     </header>
     <!-- Header Section End -->
 
-    <!-- Contact Form Begin -->
-    <div class="contact-form spad">
+    <!-- Hero Section Begin -->
+    <section class="hero">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="contact__form__title">
-                        <h2>Leave Message</h2>
+                    <div class="hero__item set-bg" data-setbg="img/banner/travel_HD.jpg">
+                        <div class="hero__text">
+                            <span>TRAVEL AGENCY</span>
+                            <h2>Travel <br />with pleasure.</h2>
+                            <p>The best choice for your trips.</p>
+                        </div>
                     </div>
                 </div>
             </div>
-            <form action="#">
-                <div class="row">
-                    <div class="col-lg-6 col-md-6">
-                        <input type="text" placeholder="Your name">
-                    </div>
-                    <div class="col-lg-6 col-md-6">
-                        <input type="text" placeholder="Your Email">
-                    </div>
-                    <div class="col-lg-12 text-center">
-                        <textarea placeholder="Your message"></textarea>
-                        <button type="submit" class="site-btn">SEND MESSAGE</button>
+        </div>
+    </section>
+    <!-- Hero Section End -->
+
+     <!-- Hero Section Begin -->
+     <section class="hero hero-normal">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="hero__search" id="inner">
+                        <div class="hero__search__form">
+                            <form action="#">
+                                <input type="text" placeholder="Where do you want to travel?">
+                                <button type="submit" class="site-btn" style="text-align: center;">SEARCH</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </form>
+            </div>
         </div>
-    </div>
-    <!-- Contact Form End -->
+    </section>
+    <!-- Hero Section End -->
+
+    <!-- Product table  -->
+    <section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+					<h2 class="heading-section">Results</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="table-wrap">
+						<table class="table">
+					    <thead class="thead-primary">
+					      <tr>
+					        <th>ID</th>
+					        <th>Trip</th>
+					        <th>Location</th>
+					        <th>Price</th>
+                            <th>Score</th>
+					        <th>Details</th>
+					      </tr>
+					    </thead>
+					    <tbody>
+					      <tr>
+					        <th scope="row" class="scope" >.com</th>
+					        <td>1 Year</td>
+					        <td>$70.00</td>
+					        <td>$5.00</td>
+					        <td>$5.00</td>
+					        <td><a href="#" class="btn btn-primary">Sign Up</a></td>
+					      </tr>
+					      <tr>
+					        <th scope="row" class="scope" >.net</th>
+					        <td>1 Year</td>
+					        <td>$75.00</td>
+					        <td>$5.00</td>
+					        <td>$5.00</td>
+					        <td><a href="#" class="btn btn-primary">Sign Up</a></td>
+					      </tr>
+					      <tr>
+					        <th scope="row" class="scope" >.org</th>
+					        <td>1 Year</td>
+					        <td>$65.00</td>
+					        <td>$5.00</td>
+					        <td>$5.00</td>
+					        <td><a href="#" class="btn btn-primary">Sign Up</a></td>
+					      </tr>
+					      <tr>
+					        <th scope="row" class="scope" >.biz</th>
+					        <td>1 Year</td>
+					        <td>$60.00</td>
+					        <td>$5.00</td>
+					        <td>$5.00</td>
+					        <td><a href="#" class="btn btn-primary">Sign Up</a></td>
+					      </tr>
+					      <tr>
+					        <th scope="row" class="scope" >.info</th>
+					        <td>1 Year</td>
+					        <td>$50.00</td>
+					        <td>$5.00</td>
+					        <td>$5.00</td>
+					        <td><a href="#" class="btn btn-primary">Sign Up</a></td>
+					      </tr>
+					      <tr>
+					        <th scope="row" class="scope border-bottom-0">.me</th>
+					        <td class="border-bottom-0">1 Year</td>
+					        <td class="border-bottom-0">$45.00</td>
+					        <td class="border-bottom-0">$5.00</td>
+					        <td class="border-bottom-0">$5.00</td>
+					        <td class="border-bottom-0"><a href="#" class="btn btn-primary">Sign Up</a></td>
+					      </tr>
+					    </tbody>
+					  </table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+    <!-- Product table end  -->
 
     <!-- Js Plugins -->
     <script src="js/jquery-3.3.1.min.js"></script>
@@ -163,5 +244,4 @@
 
 
 </body>
-
 </html>
