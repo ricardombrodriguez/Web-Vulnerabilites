@@ -9,16 +9,19 @@
 | Ricardo Rodriguez | ricardorodriguez@ua.pt   |
 | Gonçalo Pereira   |                          |
 
-## Vulnerabilidades
+## Possíveis vulnerabilidades a explorar
 
 * **CWE-79** Cross-site Scripting
 * **CWE-89** SQL Injection
+* **CWE-200** Exposure of Sensitive Information to an Unauthorized Actor
+* **CWE-257** Storing Passwords in a Recoverable Format
 * **CWE-259** Use of Hard-coded Password
 * **CWE-321** Use of Hard-coded Cryptographic Key
 * **CWE-362** Race Condition
-* **CWE-200** Exposure of Sensitive Information to an Unauthorized Actor
-* **CWE-476** NULL Pointer Dereference
 * **CWE-434** Unrestricted Upload of File with Dangerous Type
+* **CWE-476** NULL Pointer Dereference
+* **CWE-601** URL Redirection to Untrusted Site ('Open Redirect')
+* **CWE-798** Use of Hard-coded Credentials
 
 ## **SQL Database**
 
