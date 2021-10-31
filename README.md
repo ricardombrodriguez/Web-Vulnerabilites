@@ -8,7 +8,6 @@
 | Diogo Cruz        |         diogophc@ua.pt   |
 | Ricardo Rodriguez | ricardorodriguez@ua.pt   |
 | Gonçalo Pereira   |                          |
-|
 
 ## Vulnerabilidades
 
