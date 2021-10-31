@@ -11,11 +11,11 @@
 
 ## Vulnerabilidades
 
-* **CWE-79** (Cross-site Scripting)
-* **CWE-89** SQL Injection)
-* **CWE-259** (Use of Hard-coded Password)
-* **CWE-321** (Use of Hard-coded Cryptographic Key)
-* **CWE-362** (Race Condition)
+* **CWE-79** Cross-site Scripting
+* **CWE-89** SQL Injection
+* **CWE-259** Use of Hard-coded Password
+* **CWE-321** Use of Hard-coded Cryptographic Key
+* **CWE-362** Race Condition
 * **CWE-200** Exposure of Sensitive Information to an Unauthorized Actor
 * **CWE-476** NULL Pointer Dereference
 * **CWE-434** Unrestricted Upload of File with Dangerous Type
