@@ -2,12 +2,12 @@
 
 ### **Equipa**
 
-| Name              |                   email  |
-| ----------------- | -----------------------: |
-| João Reis         |       joaoreis16@ua.pt   |
-| Diogo Cruz        |         diogophc@ua.pt   |
-| Ricardo Rodriguez | ricardorodriguez@ua.pt   |
-| Gonçalo Pereira   |                          |
+| NMEC  | Name              |                   email  |
+| ----- | ----------------- | -----------------------: |
+| 98474 | João Reis         |       joaoreis16@ua.pt   |
+| 98595 | Diogo Cruz        |         diogophc@ua.pt   |
+| 98388 | Ricardo Rodriguez | ricardorodriguez@ua.pt   |
+| 93310 | Gonçalo Pereira   |  pereira.goncalo@ua.pt   |
 
 ## Possíveis vulnerabilidades a explorar
 
