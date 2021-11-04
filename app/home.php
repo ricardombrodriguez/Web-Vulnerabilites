@@ -27,6 +27,9 @@
 
 <body>
     <?php include "connection.php" ?>
+    <?php 
+        echo $_POST['email'];
+    ?>
 
     <?php
     $result = $conn->query("SELECT * FROM trips") or die($conn->error);

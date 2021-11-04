@@ -22,7 +22,7 @@
 <!--===============================================================================================-->
 </head>
 <body>
-	
+<?php include "connection.php" ?>
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('img/banner/travel_HD.jpg'); background-position: center;  background-repeat: no-repeat; background-size: cover;">
 			<div class="wrap-login100">
@@ -30,13 +30,13 @@
 					<img src="img/logo.png" style="margin-top: 100px" alt="IMG">
 				</div>
 
-				<form class="login100-form validate-form">
+				<form method="POST" class="login100-form validate-form" autocomplete="off">
 					<span class="login100-form-title">
 						Member Login
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-						<input class="input100" type="text" name="email" placeholder="Email">
+						<input class="input100" type="text" id="email" name="email" placeholder="Email">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
@@ -44,28 +44,41 @@
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate = "Password is required">
-						<input class="input100" type="password" name="pass" placeholder="Password">
+						<input class="input100" type="password" id="pass" name="pass" placeholder="Password">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-lock" aria-hidden="true"></i>
 						</span>
 					</div>
-					
 					<div class="container-login100-form-btn">
-<<<<<<< HEAD
-						<a href="./home.php">
-							<button type="button" class="login100-form-btn" style="width:290px">
-=======
-						<!-- <a href="./home.php"> -->
-							<button onclick="location.href='./home.php'" type="button" class="login100-form-btn" style="width:290px">
->>>>>>> 5a41e4e65024ed03c45e15d563f73d16194f97c4
+							<button type="submit" class="login100-form-btn" style="width:290px" name="bttn">
 								Login
 							</button>
-
 					</div>
 
 					<?php 
-					
+						if (isset($_POST['bttn']) && !empty($_POST['email'])) {
+							$mail = $_POST['email'];
+							$pass = $_POST['pass'];
+							
+							$q = "SELECT * FROM users where email='".$mail."' AND pass = '".$pass."'" ;
+							if (!mysqli_query($conn,$q))
+							{
+								echo 'Error: ' . mysqli_error($conn);
+							}else{
+							
+								$result = mysqli_query($conn,$q);
+
+								$row = mysqli_fetch_array($result);
+
+								if ($row) {
+									// header('location: home.php');
+									echo "<script> location.replace('home.php'); </script>";
+								} else {
+									echo "<div class=\"container-login100-form-btn\" ><p style=\" color: red\">Email ou Password errados :(</p> </div>";
+								}
+							}
+						}
 					?>
 <!-- 
 					<div class="text-center p-t-12">
