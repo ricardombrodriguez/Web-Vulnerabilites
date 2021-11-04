@@ -26,7 +26,7 @@
 </head>
 
 <body>
-    <?php require_once "connection.php" ?>
+    <?php include "connection.php" ?>
 
     <?php
     $result = $conn->query("SELECT * FROM trips") or die($conn->error);
@@ -202,17 +202,20 @@
                             }
                         } */
 
-                        while ($row = $result->fetch_assoc()):
-                        ?>
-					      <tr>
-					        <th scope="row" class="scope border-bottom-0"><?php echo $row['id']; ?></th>
-					        <td class="border-bottom-0"><?php echo $row['nome']; ?></td>
-					        <td class="border-bottom-0"><?php echo $row['lugar']; ?></td>
-					        <td class="border-bottom-0"><?php echo $row['preco']; ?></td>
-					        <td class="border-bottom-0"><?php echo $row['avaliacao']; ?></td>
-					        <td class="border-bottom-0"><a href="shop-details.php" class="btn btn-primary">See more</a></td>
-					      </tr>
-                        <?php endwhile; ?>
+
+
+                        foreach($result as $row): ?>
+                            <tr>
+                                <th scope="row" class="scope border-bottom-0"><?php echo $row['id']; ?></th>
+                                <td class="border-bottom-0"><?php echo $row['nome']; ?></td>
+                                <td class="border-bottom-0"><?php echo $row['lugar']; ?></td>
+                                <td class="border-bottom-0"><?php echo $row['preco']; ?></td>
+                                <td class="border-bottom-0"><?php echo $row['avaliacao']; ?></td>
+                                <td class="border-bottom-0"><a href="shop-details.php" class="btn btn-primary">See more</a></td>
+					        </tr>
+
+                        <?php endforeach; ?>
+                    
 					    </tbody>
 					  </table>
 					</div>

@@ -53,7 +53,7 @@
 					
 					<div class="container-login100-form-btn">
 						<!-- <a href="./home.php"> -->
-							<button type="button" class="login100-form-btn" style="width:290px">
+							<button onclick="location.href='./home.php'" type="button" class="login100-form-btn" style="width:290px">
 								Login
 							</button>
 
