@@ -1,0 +1,215 @@
+Attaching to spoton, api_www_1
+[33mspoton   |[0m Initializing database
+[33mspoton   |[0m 2021-11-04T16:45:52.323307Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+[33mspoton   |[0m mbind: Operation not permitted
+[33mspoton   |[0m mbind: Operation not permitted
+[33mspoton   |[0m mbind: Operation not permitted
+[33mspoton   |[0m mbind: Operation not permitted
+[33mspoton   |[0m mbind: Operation not permitted
+[33mspoton   |[0m mbind: Operation not permitted
+[33mspoton   |[0m mbind: Operation not permitted
+[33mspoton   |[0m mbind: Operation not permitted
+[33mspoton   |[0m 2021-11-04T16:45:52.537391Z 1 [Warning] InnoDB: New log files created, LSN=49311
+[33mspoton   |[0m 2021-11-04T16:45:52.583410Z 1 [Warning] InnoDB: Creating foreign key constraint system tables.
+[36mwww_1    |[0m AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.25.0.3. Set the 'ServerName' directive globally to suppress this message
+[36mwww_1    |[0m AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.25.0.3. Set the 'ServerName' directive globally to suppress this message
+[36mwww_1    |[0m [Thu Nov 04 16:45:52.848203 2021] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.51 (Debian) PHP/7.3.32 configured -- resuming normal operations
+[36mwww_1    |[0m [Thu Nov 04 16:45:52.848248 2021] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[33mspoton   |[0m 2021-11-04T16:45:53.681896Z 0 [Warning] No existing UUID has been found, so we assume that this is the first time that this server has been started. Generating a new UUID: ace28235-3d8e-11ec-8e62-0242ac190002.
+[33mspoton   |[0m 2021-11-04T16:45:53.686157Z 0 [Warning] Gtid table is not ready to be used. Table 'mysql.gtid_executed' cannot be opened.
+[33mspoton   |[0m 2021-11-04T16:45:53.687432Z 4 [Warning] root@localhost is created with an empty password ! Please consider switching off the --initialize-insecure option.
+[33mspoton   |[0m 2021-11-04T16:45:56.539627Z 4 [Warning] 'user' entry 'mysql.sys@localhost' ignored in --skip-name-resolve mode.
+[33mspoton   |[0m 2021-11-04T16:45:56.539659Z 4 [Warning] 'user' entry 'root@localhost' ignored in --skip-name-resolve mode.
+[33mspoton   |[0m 2021-11-04T16:45:56.539673Z 4 [Warning] 'db' entry 'sys mysql.sys@localhost' ignored in --skip-name-resolve mode.
+[33mspoton   |[0m 2021-11-04T16:45:56.539683Z 4 [Warning] 'proxies_priv' entry '@ root@localhost' ignored in --skip-name-resolve mode.
+[33mspoton   |[0m 2021-11-04T16:45:56.539714Z 4 [Warning] 'tables_priv' entry 'sys_config mysql.sys@localhost' ignored in --skip-name-resolve mode.
+[33mspoton   |[0m Database initialized
+[33mspoton   |[0m Initializing certificates
+[33mspoton   |[0m Generating a 2048 bit RSA private key
+[33mspoton   |[0m ....+++
+[33mspoton   |[0m ............+++
+[33mspoton   |[0m unable to write 'random state'
+[33mspoton   |[0m writing new private key to 'ca-key.pem'
+[33mspoton   |[0m -----
+[33mspoton   |[0m Generating a 2048 bit RSA private key
+[33mspoton   |[0m ................+++
+[33mspoton   |[0m ...............................+++
+[33mspoton   |[0m unable to write 'random state'
+[33mspoton   |[0m writing new private key to 'server-key.pem'
+[33mspoton   |[0m -----
+[33mspoton   |[0m Generating a 2048 bit RSA private key
+[33mspoton   |[0m ................+++
+[33mspoton   |[0m ...................................+++
+[33mspoton   |[0m unable to write 'random state'
+[33mspoton   |[0m writing new private key to 'client-key.pem'
+[33mspoton   |[0m -----
+[33mspoton   |[0m Certificates initialized
+[33mspoton   |[0m MySQL init process in progress...
+[33mspoton   |[0m 2021-11-04T16:46:00.263848Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+[33mspoton   |[0m 2021-11-04T16:46:00.264821Z 0 [Note] mysqld (mysqld 8.0.0-dmr) starting as process 89 ...
+[33mspoton   |[0m 2021-11-04T16:46:00.267709Z 0 [Note] InnoDB: Using Linux native AIO
+[33mspoton   |[0m 2021-11-04T16:46:00.267782Z 0 [Note] Plugin 'FEDERATED' is disabled.
+[33mspoton   |[0m 2021-11-04T16:46:00.268359Z 1 [Note] InnoDB: PUNCH HOLE support available
+[33mspoton   |[0m 2021-11-04T16:46:00.268369Z 1 [Note] InnoDB: Mutexes and rw_locks use GCC atomic builtins
+[33mspoton   |[0m 2021-11-04T16:46:00.268372Z 1 [Note] InnoDB: Uses event mutexes
+[33mspoton   |[0m 2021-11-04T16:46:00.268374Z 1 [Note] InnoDB: GCC builtin __atomic_thread_fence() is used for memory barrier
+[33mspoton   |[0m 2021-11-04T16:46:00.268376Z 1 [Note] InnoDB: Compressed tables use zlib 1.2.3
+[33mspoton   |[0m 2021-11-04T16:46:00.268623Z 1 [Note] InnoDB: Number of pools: 1
+[33mspoton   |[0m 2021-11-04T16:46:00.268741Z 1 [Note] InnoDB: Using CPU crc32 instructions
+[33mspoton   |[0m 2021-11-04T16:46:00.269882Z 1 [Note] InnoDB: Initializing buffer pool, total size = 128M, instances = 1, chunk size = 128M
+[33mspoton   |[0m mbind: Operation not permitted
+[33mspoton   |[0m mbind: Operation not permitted
+[33mspoton   |[0m mbind: Operation not permitted
+[33mspoton   |[0m mbind: Operation not permitted
+[33mspoton   |[0m mbind: Operation not permitted
+[33mspoton   |[0m mbind: Operation not permitted
+[33mspoton   |[0m mbind: Operation not permitted
+[33mspoton   |[0m mbind: Operation not permitted
+[33mspoton   |[0m 2021-11-04T16:46:00.278302Z 1 [Note] InnoDB: Completed initialization of buffer pool
+[33mspoton   |[0m 2021-11-04T16:46:00.280142Z 0 [Note] InnoDB: If the mysqld execution user is authorized, page cleaner thread priority can be changed. See the man page of setpriority().
+[33mspoton   |[0m 2021-11-04T16:46:00.311687Z 1 [Note] InnoDB: Creating shared tablespace for temporary tables
+[33mspoton   |[0m 2021-11-04T16:46:00.311852Z 1 [Note] InnoDB: Setting file './ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+[33mspoton   |[0m 2021-11-04T16:46:00.384614Z 1 [Note] InnoDB: File './ibtmp1' size is now 12 MB.
+[33mspoton   |[0m 2021-11-04T16:46:00.386002Z 1 [Note] InnoDB: 96 redo rollback segment(s) found. 96 redo rollback segment(s) are active.
+[33mspoton   |[0m 2021-11-04T16:46:00.386033Z 1 [Note] InnoDB: 32 non-redo rollback segment(s) are active.
+[33mspoton   |[0m 2021-11-04T16:46:00.387169Z 1 [Note] InnoDB: 8.0.0 started; log sequence number 10683997
+[33mspoton   |[0m 2021-11-04T16:46:00.390524Z 1 [Note] InnoDB: Waiting for purge to start
+[33mspoton   |[0m 2021-11-04T16:46:00.441013Z 0 [Note] InnoDB: Loading buffer pool(s) from /var/lib/mysql/ib_buffer_pool
+[33mspoton   |[0m 2021-11-04T16:46:00.454964Z 0 [Note] InnoDB: Buffer pool(s) load completed at 211104 16:46:00
+[33mspoton   |[0m 2021-11-04T16:46:00.522093Z 1 [Note] Found data dictionary with version 1
+[33mspoton   |[0m 2021-11-04T16:46:00.526278Z 0 [Note] Found ca.pem, server-cert.pem and server-key.pem in data directory. Trying to enable SSL support using them.
+[33mspoton   |[0m 2021-11-04T16:46:00.526582Z 0 [Warning] CA certificate ca.pem is self signed.
+[33mspoton   |[0m 2021-11-04T16:46:00.535663Z 0 [Warning] 'user' entry 'mysql.sys@localhost' ignored in --skip-name-resolve mode.
+[33mspoton   |[0m 2021-11-04T16:46:00.535685Z 0 [Warning] 'user' entry 'root@localhost' ignored in --skip-name-resolve mode.
+[33mspoton   |[0m 2021-11-04T16:46:00.535697Z 0 [Warning] 'db' entry 'sys mysql.sys@localhost' ignored in --skip-name-resolve mode.
+[33mspoton   |[0m 2021-11-04T16:46:00.535705Z 0 [Warning] 'proxies_priv' entry '@ root@localhost' ignored in --skip-name-resolve mode.
+[33mspoton   |[0m 2021-11-04T16:46:00.537858Z 0 [Warning] 'tables_priv' entry 'sys_config mysql.sys@localhost' ignored in --skip-name-resolve mode.
+[33mspoton   |[0m 2021-11-04T16:46:00.562952Z 0 [Note] mysqld: ready for connections.
+[33mspoton   |[0m Version: '8.0.0-dmr'  socket: '/var/run/mysqld/mysqld.sock'  port: 0  MySQL Community Server (GPL)
+[33mspoton   |[0m Warning: Unable to load '/usr/share/zoneinfo/iso3166.tab' as time zone. Skipping it.
+[33mspoton   |[0m Warning: Unable to load '/usr/share/zoneinfo/leap-seconds.list' as time zone. Skipping it.
+[33mspoton   |[0m Warning: Unable to load '/usr/share/zoneinfo/zone.tab' as time zone. Skipping it.
+[33mspoton   |[0m 2021-11-04T16:46:02.774660Z 6 [Warning] 'user' entry 'mysql.sys@localhost' ignored in --skip-name-resolve mode.
+[33mspoton   |[0m 2021-11-04T16:46:02.774679Z 6 [Warning] 'user' entry 'root@localhost' ignored in --skip-name-resolve mode.
+[33mspoton   |[0m 2021-11-04T16:46:02.774691Z 6 [Warning] 'db' entry 'sys mysql.sys@localhost' ignored in --skip-name-resolve mode.
+[33mspoton   |[0m 2021-11-04T16:46:02.774700Z 6 [Warning] 'proxies_priv' entry '@ root@localhost' ignored in --skip-name-resolve mode.
+[33mspoton   |[0m 2021-11-04T16:46:02.774724Z 6 [Warning] 'tables_priv' entry 'sys_config mysql.sys@localhost' ignored in --skip-name-resolve mode.
+[33mspoton   |[0m mysql: [Warning] Using a password on the command line interface can be insecure.
+[33mspoton   |[0m mysql: [Warning] Using a password on the command line interface can be insecure.
+[33mspoton   |[0m mysql: [Warning] Using a password on the command line interface can be insecure.
+[33mspoton   |[0m mysql: [Warning] Using a password on the command line interface can be insecure.
+[33mspoton   |[0m 2021-11-04T16:46:02.812575Z 10 [Warning] 'user' entry 'mysql.sys@localhost' ignored in --skip-name-resolve mode.
+[33mspoton   |[0m 2021-11-04T16:46:02.812633Z 10 [Warning] 'user' entry 'root@localhost' ignored in --skip-name-resolve mode.
+[33mspoton   |[0m 2021-11-04T16:46:02.812686Z 10 [Warning] 'db' entry 'sys mysql.sys@localhost' ignored in --skip-name-resolve mode.
+[33mspoton   |[0m 2021-11-04T16:46:02.812716Z 10 [Warning] 'proxies_priv' entry '@ root@localhost' ignored in --skip-name-resolve mode.
+[33mspoton   |[0m 2021-11-04T16:46:02.812968Z 10 [Warning] 'tables_priv' entry 'sys_config mysql.sys@localhost' ignored in --skip-name-resolve mode.
+[33mspoton   |[0m 
+[33mspoton   |[0m /usr/local/bin/docker-entrypoint.sh: running /docker-entrypoint-initdb.d/spoton.sql
+[33mspoton   |[0m mysql: [Warning] Using a password on the command line interface can be insecure.
+[33mspoton   |[0m 
+[33mspoton   |[0m 
+[33mspoton   |[0m 2021-11-04T16:46:03.028253Z 0 [Note] Giving 0 client threads a chance to die gracefully
+[33mspoton   |[0m 2021-11-04T16:46:03.028310Z 0 [Note] Shutting down slave threads
+[33mspoton   |[0m 2021-11-04T16:46:03.028321Z 0 [Note] Forcefully disconnecting 0 remaining clients
+[33mspoton   |[0m 2021-11-04T16:46:03.028333Z 0 [Note] Event Scheduler: Purging the queue. 0 events
+[33mspoton   |[0m 2021-11-04T16:46:03.028516Z 0 [Note] InnoDB: FTS optimize thread exiting.
+[33mspoton   |[0m 2021-11-04T16:46:03.132351Z 0 [Note] Binlog end
+[33mspoton   |[0m 2021-11-04T16:46:03.136192Z 0 [Note] Shutting down plugin 'ngram'
+[33mspoton   |[0m 2021-11-04T16:46:03.136218Z 0 [Note] Shutting down plugin 'BLACKHOLE'
+[33mspoton   |[0m 2021-11-04T16:46:03.136226Z 0 [Note] Shutting down plugin 'ARCHIVE'
+[33mspoton   |[0m 2021-11-04T16:46:03.136231Z 0 [Note] Shutting down plugin 'INNODB_CACHED_INDEXES'
+[33mspoton   |[0m 2021-11-04T16:46:03.136237Z 0 [Note] Shutting down plugin 'INNODB_SYS_VIRTUAL'
+[33mspoton   |[0m 2021-11-04T16:46:03.136242Z 0 [Note] Shutting down plugin 'INNODB_SYS_DATAFILES'
+[33mspoton   |[0m 2021-11-04T16:46:03.136247Z 0 [Note] Shutting down plugin 'INNODB_SYS_TABLESPACES'
+[33mspoton   |[0m 2021-11-04T16:46:03.136251Z 0 [Note] Shutting down plugin 'INNODB_SYS_FOREIGN_COLS'
+[33mspoton   |[0m 2021-11-04T16:46:03.136256Z 0 [Note] Shutting down plugin 'INNODB_SYS_FOREIGN'
+[33mspoton   |[0m 2021-11-04T16:46:03.136260Z 0 [Note] Shutting down plugin 'INNODB_SYS_FIELDS'
+[33mspoton   |[0m 2021-11-04T16:46:03.136265Z 0 [Note] Shutting down plugin 'INNODB_SYS_COLUMNS'
+[33mspoton   |[0m 2021-11-04T16:46:03.136270Z 0 [Note] Shutting down plugin 'INNODB_SYS_INDEXES'
+[33mspoton   |[0m 2021-11-04T16:46:03.136274Z 0 [Note] Shutting down plugin 'INNODB_SYS_TABLESTATS'
+[33mspoton   |[0m 2021-11-04T16:46:03.136279Z 0 [Note] Shutting down plugin 'INNODB_SYS_TABLES'
+[33mspoton   |[0m 2021-11-04T16:46:03.136283Z 0 [Note] Shutting down plugin 'INNODB_FT_INDEX_TABLE'
+[33mspoton   |[0m 2021-11-04T16:46:03.136290Z 0 [Note] Shutting down plugin 'INNODB_FT_INDEX_CACHE'
+[33mspoton   |[0m 2021-11-04T16:46:03.136294Z 0 [Note] Shutting down plugin 'INNODB_FT_CONFIG'
+[33mspoton   |[0m 2021-11-04T16:46:03.136299Z 0 [Note] Shutting down plugin 'INNODB_FT_BEING_DELETED'
+[33mspoton   |[0m 2021-11-04T16:46:03.136304Z 0 [Note] Shutting down plugin 'INNODB_FT_DELETED'
+[33mspoton   |[0m 2021-11-04T16:46:03.136309Z 0 [Note] Shutting down plugin 'INNODB_FT_DEFAULT_STOPWORD'
+[33mspoton   |[0m 2021-11-04T16:46:03.136313Z 0 [Note] Shutting down plugin 'INNODB_METRICS'
+[33mspoton   |[0m 2021-11-04T16:46:03.136318Z 0 [Note] Shutting down plugin 'INNODB_TEMP_TABLE_INFO'
+[33mspoton   |[0m 2021-11-04T16:46:03.136324Z 0 [Note] Shutting down plugin 'INNODB_BUFFER_POOL_STATS'
+[33mspoton   |[0m 2021-11-04T16:46:03.136328Z 0 [Note] Shutting down plugin 'INNODB_BUFFER_PAGE_LRU'
+[33mspoton   |[0m 2021-11-04T16:46:03.136334Z 0 [Note] Shutting down plugin 'INNODB_BUFFER_PAGE'
+[33mspoton   |[0m 2021-11-04T16:46:03.136339Z 0 [Note] Shutting down plugin 'INNODB_CMP_PER_INDEX_RESET'
+[33mspoton   |[0m 2021-11-04T16:46:03.136344Z 0 [Note] Shutting down plugin 'INNODB_CMP_PER_INDEX'
+[33mspoton   |[0m 2021-11-04T16:46:03.136349Z 0 [Note] Shutting down plugin 'INNODB_CMPMEM_RESET'
+[33mspoton   |[0m 2021-11-04T16:46:03.136354Z 0 [Note] Shutting down plugin 'INNODB_CMPMEM'
+[33mspoton   |[0m 2021-11-04T16:46:03.136359Z 0 [Note] Shutting down plugin 'INNODB_CMP_RESET'
+[33mspoton   |[0m 2021-11-04T16:46:03.136363Z 0 [Note] Shutting down plugin 'INNODB_CMP'
+[33mspoton   |[0m 2021-11-04T16:46:03.136368Z 0 [Note] Shutting down plugin 'INNODB_LOCK_WAITS'
+[33mspoton   |[0m 2021-11-04T16:46:03.136373Z 0 [Note] Shutting down plugin 'INNODB_LOCKS'
+[33mspoton   |[0m 2021-11-04T16:46:03.136378Z 0 [Note] Shutting down plugin 'INNODB_TRX'
+[33mspoton   |[0m 2021-11-04T16:46:03.136383Z 0 [Note] Shutting down plugin 'InnoDB'
+[33mspoton   |[0m 2021-11-04T16:46:03.136409Z 0 [Note] InnoDB: Starting shutdown...
+[33mspoton   |[0m 2021-11-04T16:46:03.236728Z 0 [Note] InnoDB: Dumping buffer pool(s) to /var/lib/mysql/ib_buffer_pool
+[33mspoton   |[0m 2021-11-04T16:46:03.237114Z 0 [Note] InnoDB: Buffer pool(s) dump completed at 211104 16:46:03
+[33mspoton   |[0m 2021-11-04T16:46:04.256412Z 0 [Note] InnoDB: Shutdown completed; log sequence number 20370451
+[33mspoton   |[0m 2021-11-04T16:46:04.257931Z 0 [Note] InnoDB: Removed temporary tablespace data file: "ibtmp1"
+[33mspoton   |[0m 2021-11-04T16:46:04.257944Z 0 [Note] Shutting down plugin 'MRG_MYISAM'
+[33mspoton   |[0m 2021-11-04T16:46:04.257947Z 0 [Note] Shutting down plugin 'MyISAM'
+[33mspoton   |[0m 2021-11-04T16:46:04.257955Z 0 [Note] Shutting down plugin 'CSV'
+[33mspoton   |[0m 2021-11-04T16:46:04.257958Z 0 [Note] Shutting down plugin 'MEMORY'
+[33mspoton   |[0m 2021-11-04T16:46:04.257960Z 0 [Note] Shutting down plugin 'PERFORMANCE_SCHEMA'
+[33mspoton   |[0m 2021-11-04T16:46:04.257978Z 0 [Note] Shutting down plugin 'sha256_password'
+[33mspoton   |[0m 2021-11-04T16:46:04.257980Z 0 [Note] Shutting down plugin 'mysql_native_password'
+[33mspoton   |[0m 2021-11-04T16:46:04.258147Z 0 [Note] Shutting down plugin 'binlog'
+[33mspoton   |[0m 2021-11-04T16:46:04.259459Z 0 [Note] mysqld: Shutdown complete
+[33mspoton   |[0m 
+[33mspoton   |[0m 
+[33mspoton   |[0m MySQL init process done. Ready for start up.
+[33mspoton   |[0m 
+[33mspoton   |[0m 2021-11-04T16:46:04.524036Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+[33mspoton   |[0m 2021-11-04T16:46:04.525020Z 0 [Note] mysqld (mysqld 8.0.0-dmr) starting as process 1 ...
+[33mspoton   |[0m 2021-11-04T16:46:04.527977Z 0 [Note] InnoDB: Using Linux native AIO
+[33mspoton   |[0m 2021-11-04T16:46:04.528031Z 0 [Note] Plugin 'FEDERATED' is disabled.
+[33mspoton   |[0m 2021-11-04T16:46:04.528753Z 1 [Note] InnoDB: PUNCH HOLE support available
+[33mspoton   |[0m 2021-11-04T16:46:04.528762Z 1 [Note] InnoDB: Mutexes and rw_locks use GCC atomic builtins
+[33mspoton   |[0m 2021-11-04T16:46:04.528765Z 1 [Note] InnoDB: Uses event mutexes
+[33mspoton   |[0m 2021-11-04T16:46:04.528768Z 1 [Note] InnoDB: GCC builtin __atomic_thread_fence() is used for memory barrier
+[33mspoton   |[0m 2021-11-04T16:46:04.528793Z 1 [Note] InnoDB: Compressed tables use zlib 1.2.3
+[33mspoton   |[0m 2021-11-04T16:46:04.529021Z 1 [Note] InnoDB: Number of pools: 1
+[33mspoton   |[0m 2021-11-04T16:46:04.529098Z 1 [Note] InnoDB: Using CPU crc32 instructions
+[33mspoton   |[0m 2021-11-04T16:46:04.530237Z 1 [Note] InnoDB: Initializing buffer pool, total size = 128M, instances = 1, chunk size = 128M
+[33mspoton   |[0m mbind: Operation not permitted
+[33mspoton   |[0m mbind: Operation not permitted
+[33mspoton   |[0m mbind: Operation not permitted
+[33mspoton   |[0m mbind: Operation not permitted
+[33mspoton   |[0m mbind: Operation not permitted
+[33mspoton   |[0m mbind: Operation not permitted
+[33mspoton   |[0m mbind: Operation not permitted
+[33mspoton   |[0m mbind: Operation not permitted
+[33mspoton   |[0m 2021-11-04T16:46:04.538539Z 1 [Note] InnoDB: Completed initialization of buffer pool
+[33mspoton   |[0m 2021-11-04T16:46:04.540234Z 0 [Note] InnoDB: If the mysqld execution user is authorized, page cleaner thread priority can be changed. See the man page of setpriority().
+[33mspoton   |[0m 2021-11-04T16:46:04.572847Z 1 [Note] InnoDB: Creating shared tablespace for temporary tables
+[33mspoton   |[0m 2021-11-04T16:46:04.572948Z 1 [Note] InnoDB: Setting file './ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+[33mspoton   |[0m 2021-11-04T16:46:04.627615Z 1 [Note] InnoDB: File './ibtmp1' size is now 12 MB.
+[33mspoton   |[0m 2021-11-04T16:46:04.628396Z 1 [Note] InnoDB: 96 redo rollback segment(s) found. 96 redo rollback segment(s) are active.
+[33mspoton   |[0m 2021-11-04T16:46:04.628407Z 1 [Note] InnoDB: 32 non-redo rollback segment(s) are active.
+[33mspoton   |[0m 2021-11-04T16:46:04.628797Z 1 [Note] InnoDB: 8.0.0 started; log sequence number 20370451
+[33mspoton   |[0m 2021-11-04T16:46:04.630474Z 1 [Note] InnoDB: Waiting for purge to start
+[33mspoton   |[0m 2021-11-04T16:46:04.680930Z 0 [Note] InnoDB: Loading buffer pool(s) from /var/lib/mysql/ib_buffer_pool
+[33mspoton   |[0m 2021-11-04T16:46:04.697991Z 0 [Note] InnoDB: Buffer pool(s) load completed at 211104 16:46:04
+[33mspoton   |[0m 2021-11-04T16:46:04.758052Z 1 [Note] Found data dictionary with version 1
+[33mspoton   |[0m 2021-11-04T16:46:04.760914Z 0 [Note] Found ca.pem, server-cert.pem and server-key.pem in data directory. Trying to enable SSL support using them.
+[33mspoton   |[0m 2021-11-04T16:46:04.761072Z 0 [Warning] CA certificate ca.pem is self signed.
+[33mspoton   |[0m 2021-11-04T16:46:04.762507Z 0 [Note] Server hostname (bind-address): '*'; port: 3306
+[33mspoton   |[0m 2021-11-04T16:46:04.762590Z 0 [Note] IPv6 is available.
+[33mspoton   |[0m 2021-11-04T16:46:04.762602Z 0 [Note]   - '::' resolves to '::';
+[33mspoton   |[0m 2021-11-04T16:46:04.762638Z 0 [Note] Server socket created on IP: '::'.
+[33mspoton   |[0m 2021-11-04T16:46:04.769551Z 0 [Warning] 'user' entry 'mysql.sys@localhost' ignored in --skip-name-resolve mode.
+[33mspoton   |[0m 2021-11-04T16:46:04.769566Z 0 [Warning] 'user' entry 'root@localhost' ignored in --skip-name-resolve mode.
+[33mspoton   |[0m 2021-11-04T16:46:04.769579Z 0 [Warning] 'db' entry 'sys mysql.sys@localhost' ignored in --skip-name-resolve mode.
+[33mspoton   |[0m 2021-11-04T16:46:04.769588Z 0 [Warning] 'proxies_priv' entry '@ root@localhost' ignored in --skip-name-resolve mode.
+[33mspoton   |[0m 2021-11-04T16:46:04.771933Z 0 [Warning] 'tables_priv' entry 'sys_config mysql.sys@localhost' ignored in --skip-name-resolve mode.
+[33mspoton   |[0m 2021-11-04T16:46:04.793862Z 0 [Note] mysqld: ready for connections.
+[33mspoton   |[0m Version: '8.0.0-dmr'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server (GPL)
+Gracefully stopping... (press Ctrl+C again to force)
