@@ -1,6 +1,4 @@
-create database if not exists `spoton`;
--- CREATE USER 'admin'@'localhost' IDENTIFIED BY 'admin';
--- GRANT SELECT, INSERT, CREATE, DROP ON spoton.* TO 'admin'@'localhost';
+create database if not exists `spoton` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 use `spoton`;
 
 
@@ -12,8 +10,9 @@ create table if not exists `users` (
 
     PRIMARY KEY(`id`)
 );
+go
 
-create table `trips` (
+create table if not exists `trips` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `nome` VARCHAR(100) NOT NULL,
     `preco` DOUBLE not null,
@@ -22,13 +21,15 @@ create table `trips` (
     `avaliacao` int check (`avaliacao` >= 0 and `avaliacao` < 6),
     PRIMARY KEY( `id`)
 );
+go
 
-create table `comment` (
+create table if not exists `comment` (
     `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `autor` int not null,
     `texto` VARCHAR(300),
     FOREIGN KEY (`autor`) references users(`id`)
 );
+go
 
 
 -- INSERT TRIPS

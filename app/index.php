@@ -51,7 +51,6 @@
 						</span>
 					</div>
 					<div class="container-login100-form-btn">
-						<!-- <a href="./home.php"> -->
 							<button type="submit" class="login100-form-btn" style="width:290px" name="bttn">
 								Login
 							</button>
@@ -81,7 +80,7 @@
 							}
 						}
 					?>
-
+<!-- 
 					<div class="text-center p-t-12">
 						<span class="txt1">
 							Forgot
@@ -89,11 +88,11 @@
 						<a class="txt2" href="#">
 							Username / Password?
 						</a>
-					</div>
+					</div> -->
 
 					<div class="text-center p-t-136">
-						<a class="txt2" href="#">
-							Create your Account
+						<a class="txt2" href="./create.php">
+							Create New Account
 							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
 						</a>
 					</div>
@@ -101,8 +100,6 @@
 			</div>
 		</div>
 	</div>
-	
-	
 
 	
 <!--===============================================================================================-->	
