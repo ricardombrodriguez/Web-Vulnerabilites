@@ -145,7 +145,7 @@
                 <div class="col-lg-12">
                     <div class="hero__search" id="inner">
                         <div class="hero__search__form">
-                            <form method="POST">
+                            <form method="GET">
                                 <input type="text" placeholder="Where do you want to travel?" name="searchitem">
                                 <button type="submit" class="site-btn" style="text-align: center;" name="searchbtn">SEARCH</button>
                                 <?php
@@ -191,6 +191,8 @@
 
                         if (isset($_GET["searchitem"])) {
                             
+                            echo "SELECT * from trips where lugar like '%".$_GET["searchitem"]."%'";
+                            $q = "SELECT * from trips where lugar like '%".$_GET["searchitem"]."%'";
                             $result = mysqli_query($conn,$q);
 
                             if (!$result){
