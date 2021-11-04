@@ -34,5 +34,34 @@ if (isset($_POST['searchbtn'])) {
 
   $conn->query("SELECT * FROM trips") or die($conn->error);
 } 
+
+// Check that user sent some data when creating account 
+// if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['pass'])){
+
+//   $name=preg_replace('/[^a-zA-Z0-9\ ]/','',$_POST['name']);
+//   $email=preg_replace('/[^a-zA-Z0-9\ ]/','',$_POST['email']);
+//   $pass=preg_replace('/[^a-zA-Z0-9\ ]/','',$_POST['pass']);
+
+//     /* Escape your input: use htmlspecialchars to avoid most obvious XSS attacks.
+//      * Note: Your application may still be vulnerable to XSS if you use variables in an attribute without proper quoting.
+//      */
+
+//     $name=htmlspecialchars($name);
+//     $email=htmlspecialchars($email);
+//     $pass=htmlspecialchars($pass);
+
+//   // $name = $_POST['name'];
+//   // $email = $_POST['email'];
+//   // $pass = $_POST['pass'];
+
+//   $sql = "INSERT INTO users (name, email, pass) VALUES ('{$name}', '{$email}', '{$pass}')";
+
+//   if ($conn->query($sql)) {
+//     echo "New user added successfully";
+//   } else {
+//     echo "Error: " . $sql . "<br>" . $conn->error;
+//   }
+
+// }
 ?>
 

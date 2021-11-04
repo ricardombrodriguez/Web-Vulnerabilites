@@ -29,7 +29,7 @@
     <?php require_once "connection.php" ?>
 
     <?php
-    $result = $conn->query("SELECT * FROM trips") or die($conn->error);
+    $result = $conn->query("SELECT * FROM users") or die($conn->error);
     ?>
 
     <!-- Page Preloder -->

@@ -1,6 +1,6 @@
 create database if not exists `spoton`;
 -- CREATE USER 'admin'@'localhost' IDENTIFIED BY 'admin';
--- GRANT SELECT, INSERT, CREATE, DROP ON spoton.* TO 'admin'@'localhost';
+-- GRANT ALL PRIVILEGES ON spoton.* TO 'admin'@'localhost' WITH GRANT OPTION;
 use `spoton`;
 
 
@@ -13,7 +13,7 @@ create table if not exists `users` (
     PRIMARY KEY(`id`)
 );
 
-create table `trips` (
+create table if not exists `trips` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `nome` VARCHAR(100) NOT NULL,
     `preco` DOUBLE not null,
