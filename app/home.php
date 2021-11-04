@@ -29,7 +29,7 @@
     <?php include "connection.php" ?>
 
     <?php
-    $result = $conn->query("SELECT * FROM users") or die($conn->error);
+    $result = $conn->query("SELECT * FROM trips") or die($conn->error);
     ?>
 
     <!-- Page Preloder -->
@@ -189,20 +189,15 @@
 					    <tbody>
                         <?php
 
-                        /* if (isset($_POST["searchitem"])) {
+                        if (isset($_GET["searchitem"])) {
+                            
                             $result = mysqli_query($conn,$q);
 
                             if (!$result){
                                 echo("</table></div>".mysqli_error($conn));
 
-                            }else{
-                                while($row = mysqli_fetch_array($result)) {
-                                    echo "<tr><td >".$row["id"]."</td> <td>".$row["nome"]."</td> <td >".$row["local"]."</td><td >".$row["preco"]."</td><td >".$row["avaliacao"]."</td><td class=\"border-bottom-0\"><a href=\"shop-details.php\" class=\"btn btn-primary\">See more</a></td></tr>";
-                                }
                             }
-                        } */
-
-
+                        }
 
                         foreach($result as $row): ?>
                             <tr>

@@ -1,10 +1,4 @@
-<<<<<<< HEAD
 create database if not exists `spoton` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-=======
-create database if not exists `spoton`;
--- CREATE USER 'admin'@'localhost' IDENTIFIED BY 'admin';
--- GRANT ALL PRIVILEGES ON spoton.* TO 'admin'@'localhost' WITH GRANT OPTION;
->>>>>>> dc0564d5b0cfec4ec3a1f0786e97a9accd126277
 use `spoton`;
 
 
