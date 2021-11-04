@@ -51,3 +51,13 @@ Códigos de cupão (dentro da shopping cart)
 * CWE-259 : Use of Hard-coded Password
 * CWE-476 : NULL Pointer Dereference
 * CWE-257 : Storing Passwords in a Recoverable Format
+
+
+# Docker
+
+1)
+```
+docker-compose up
+```
+
+2) Aceder http://localhost:5000/ 

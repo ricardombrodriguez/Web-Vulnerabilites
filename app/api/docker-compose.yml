@@ -17,6 +17,7 @@ services:
     restart: always
 
   mysql:
+    container_name: spoton
     image: mysql:8.0.0
     command: --default-authentication-plugin=mysql_native_password
     ports:

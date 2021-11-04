@@ -52,12 +52,16 @@
 					</div>
 					
 					<div class="container-login100-form-btn">
-						<a href="./index.html">
+						<!-- <a href="./home.php"> -->
 							<button type="button" class="login100-form-btn" style="width:290px">
 								Login
 							</button>
-						</a>
+
 					</div>
+
+					<?php 
+					
+					?>
 
 					<div class="text-center p-t-12">
 						<span class="txt1">
