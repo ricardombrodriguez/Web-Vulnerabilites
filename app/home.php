@@ -191,7 +191,6 @@
 
                         if (isset($_GET["searchitem"])) {
                             
-                            echo "SELECT * from trips where lugar like '%".$_GET["searchitem"]."%'";
                             $q = "SELECT * from trips where lugar like '%".$_GET["searchitem"]."%'";
                             $result = mysqli_query($conn,$q);
 
@@ -203,12 +202,18 @@
 
                         foreach($result as $row): ?>
                             <tr>
-                                <th scope="row" class="scope border-bottom-0"><?php echo $row['id']; ?></th>
-                                <td class="border-bottom-0"><?php echo $row['nome']; ?></td>
-                                <td class="border-bottom-0"><?php echo $row['lugar']; ?></td>
-                                <td class="border-bottom-0"><?php echo $row['preco']; ?></td>
-                                <td class="border-bottom-0"><?php echo $row['avaliacao']; ?></td>
-                                <td class="border-bottom-0"><a href="shop-details.php" class="btn btn-primary">See more</a></td>
+                                <form method="POST" name="trip" action="shop-details.php">
+                                    <th id="row_id" scope="row" class="scope border-bottom-0"><?php echo $row['id']; ?></th>
+                                    <td class="border-bottom-0" value="<?= $row['nome'] ?>"><?php echo $row['nome']; ?></td>
+                                    <td class="border-bottom-0" value="<?= $row['lugar'] ?>"><?php echo $row['lugar']; ?></td>
+                                    <td class="border-bottom-0" value="<?= $row['preco'] ?>"><?php echo $row['preco']; ?></td>
+                                    <td class="border-bottom-0" value="<?= $row['avaliacao'] ?>"><?php echo $row['avaliacao']; ?></td>
+                                    <td class="border-bottom-0">
+                                        <input type="hidden" name="descricao" value="<?= $row['descricao'] ?>" />
+                                        <input type="hidden" name="trip_id" value="<?= $row['id'] ?>" />
+                                        <button type="submit" class="btn btn-primary" style="text-align: center;" name="see_more">Details</button>
+                                    </td>
+                                </form>
 					        </tr>
 
                         <?php endforeach; ?>
