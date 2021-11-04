@@ -145,6 +145,8 @@
 
     <?php
 
+    //falta receber os parametros do home para preencher a pagina
+
     if (isset($_POST["trip"])) {
         $id = $_POST["trip_id"];
         $nome = $_POST["nome"];
