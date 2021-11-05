@@ -7,7 +7,7 @@
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ogani | Template</title>
+    <title>Spoton</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
@@ -123,12 +123,12 @@
     <!-- Header Section End -->
 
     <!-- Contact Form Begin -->
-    <div class="contact-form spad">
+    <div class="contact-form spad" style="background-image=url('img/banner/banner.png')">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="contact__form__title">
-                        <h2>Leave Message</h2>
+                        <h2>Leave us a message</h2>
                     </div>
                 </div>
             </div>
@@ -142,6 +142,11 @@
                     </div>
                     <div class="col-lg-12 text-center">
                         <textarea placeholder="Your message"></textarea>
+                    </div>
+                    <div class="col-lg-12 text-center">
+                        <input type="file" class="form-control" id="customFile" />
+                    </div>
+                    <div class="col-lg-12 text-center">
                         <button type="submit" class="site-btn">SEND MESSAGE</button>
                     </div>
                 </div>
