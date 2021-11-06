@@ -1,3 +1,8 @@
+<?php 
+session_start();
+include("connection.php");
+?>
+
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -24,8 +29,6 @@
 </head>
 
 <body>
-
-    <?php include "connection.php" ?>
 
     <!-- Page Preloder -->
     <div id="preloder">
@@ -61,17 +64,8 @@
         </div>
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
-                <li><a href="./index.html">Home</a></li>
-                <li><a href="#">Pages</a>
-                    <ul class="header__menu__dropdown">
-                        <li><a href="./shop-details.html">Shop Details</a></li>
-                        <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                        <li><a href="./checkout.html">Check Out</a></li>
-                        <li><a href="./blog-details.html">Blog Details</a></li>
-                    </ul>
-                </li>
-                <li><a href="./blog.html">Blog</a></li>
-                <li><a href="./contact.html">Contact</a></li>
+                <li><a href="./home.php">Home</a></li>
+                <li><a href="./contact.php">Contact</a></li>
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
@@ -96,14 +90,14 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="header__logo">
-                        <a href="./index.html"><img src="img/logo.png" height="60px" alt=""></a>
+                        <a href="./home.php"><img src="img/logo.png" height="60px" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <nav class="header__menu">
                         <ul>
-                            <li class="active"><a href="./index.html">Shop</a></li>
-                            <li><a href="./contact.html">Contact</a></li>
+                            <li><a href="./home.php">Home</a></li>
+                            <li><a href="./contact.php">Contact</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -144,16 +138,14 @@
     <!-- Hero Section End -->
 
     <?php
-
     if (isset($_POST["trip_id"])) {
 
-        $id = $_POST["trip_id"];
-        $nome = $_POST["nome"];
-        $descricao = $_POST["descricao"];
-        $lugar = $_POST["lugar"];
-        $preco = $_POST["preco"];
-        $avaliacao = $_POST["avaliacao"];
-        echo $preco;
+    $id = $_POST["trip_id"];
+    $nome = $_POST["nome"];
+    $descricao = $_POST["descricao"];
+    $lugar = $_POST["lugar"];
+    $preco = $_POST["preco"];
+    $avaliacao = $_POST["avaliacao"];
 
     }
     ?>
@@ -166,7 +158,7 @@
                     <div class="product__details__pic">
                         <div class="product__details__pic__item">
                             <img class="product__details__pic__item--large"
-                                src="img/product/details/product-details-1.jpg" alt="">
+                                src="img/product/details/aveiro-foto-barco.jpg" alt="">
                         </div>
                     </div>
                 </div>
@@ -174,7 +166,7 @@
                     <div class="product__details__text">
                         <h2><?php echo $lugar; ?></h2>
                         <h3><?php echo $nome; ?></h3>
-                        <p><?php echo $avaliacao; ?>/5</p>
+                        <p><b>Avaliação: </b><?php echo $avaliacao; ?>/5</p>
                         <div class="product__details__price"><?php echo $preco; ?>€</div>
                         <p><?php echo $descricao; ?></p>
                         <div class="product__details__quantity">
@@ -200,16 +192,42 @@
                             <div class="d-flex justify-content-center row">
                                 <div class="d-flex flex-column col-md-12">
                                     <div class="coment-bottom bg-white p-2 px-4">
-                                        <div class="d-flex flex-row add-comment-section mt-4 mb-4"><input type="text" class="form-control mr-3" placeholder="Add comment"><button class="btn btn-primary" type="button">Comment</button></div>
-                                        
-                                        <!-- COMENTÁRIOS -->
 
+                                        <!-- INTRODUZIR COMENTÁRIO -->
+                                        <form method="POST">
+                                            
+                                            <div class="d-flex flex-row add-comment-section mt-4 mb-4"><input type="text" class="form-control mr-3" placeholder="Add comment" name="comment"><button type="submit" class="btn btn-primary" style="text-align: center;">Comment</button></div>
+                                            
+                                            <?php
+
+                                            echo "ola";
+                                            echo $_SESSION['trip_id'];
+
+                                        
+                                            if (isset($_GET["comment"])) {
+
+                                                $query = "INSERT INTO comment VALUES ({$_SESSION['trip_id']},{$_SESSION['user_id']},'{$_GET["comment"]}')";
+                                                echo $query;
+                                                $result = mysqli_query($conn,$q);
+
+                                                if (!$result){
+                                                    echo "<div class=\"container-login100-form-btn\" ><p style=\" color: red\">Invalid comment.</p> </div>";
+
+                                                }
+                                            }
+                                            ?>
+
+
+                                        </form>
+
+                                        <!-- COMENTÁRIOS -->
                                         <?php
-                                        $result = $conn->query("SELECT * FROM comment WHERE trip='{$id}'");
+
+                                        $resultado = $conn->query("SELECT * FROM comment WHERE trip='{$id}'") or die($conn->error);
                                         ?>
                                         <table>
                                             <?php 
-                                                foreach($result as $row): ?>
+                                                foreach($resultado as $row): ?>
 
                                                     <?php
                                                     $autor_id = $row['autor'];
