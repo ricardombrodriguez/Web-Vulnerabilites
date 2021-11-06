@@ -210,12 +210,8 @@
                                     <td class="border-bottom-0" value="<?= $row['nome'] ?>"><?php echo $row['nome']; ?></td>
                                     <td class="border-bottom-0" value="<?= $row['lugar'] ?>"><?php echo $row['lugar']; ?></td>
                                     <td class="border-bottom-0" value="<?= $row['preco'] ?>"><?php echo $row['preco']; ?></td>
-                                    <td class="border-bottom-0"><?php echo $row['avaliacao']; ?></td>
+                                    <td class="border-bottom-0" value="<?= $row['avaliacao'] ?>"><?php echo $row['avaliacao']; ?></td>
                                     <td class="border-bottom-0">
-                                        <input type="hidden" name="nome" value="<?= $row['nome'] ?>" />
-                                        <input type="hidden" name="preco" value="<?= $row['preco'] ?>" />
-                                        <input type="hidden" name="lugar" value="<?= $row['lugar'] ?>" />
-                                        <input type="hidden" name="avaliacao" value="<?= $row['avaliacao'] ?>" />
                                         <input type="hidden" name="descricao" value="<?= $row['descricao'] ?>" />
                                         <input type="hidden" name="trip_id" value="<?= $row['id'] ?>" />
                                         <button type="submit" class="btn btn-primary" style="text-align: center;" name="see_more">Details</button>

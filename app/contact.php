@@ -132,19 +132,22 @@
                     </div>
                 </div>
             </div>
-            <form action="#">
+            <form action="#" method="POST">
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
                         <input type="text" placeholder="Your name">
                     </div>
                     <div class="col-lg-6 col-md-6">
-                        <input type="text" placeholder="Your Email">
+                        <input type="text" placeholder="Your Email"> <?php echo $_SESSION['email'];?>
                     </div>
                     <div class="col-lg-12 text-center">
                         <textarea placeholder="Your message"></textarea>
                     </div>
-                    <div class="col-lg-12 text-center">
-                        <input type="file" class="form-control" id="customFile" />
+                    <div class="col-lg-12 ">
+                        <div class="input-group mb-3">
+                            <input type="file" class="custom-file-input" id="inputGroupFile01">
+                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                        </div>
                     </div>
                     <div class="col-lg-12 text-center">
                         <button type="submit" class="site-btn">SEND MESSAGE</button>

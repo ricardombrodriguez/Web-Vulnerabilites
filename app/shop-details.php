@@ -125,7 +125,7 @@
     <!-- Header Section End -->
     
     <!-- Hero Section Begin -->
-    <section class="hero hero-normal">
+<!--     <section class="hero hero-normal">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -140,7 +140,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- Hero Section End -->
 
     <?php
@@ -153,6 +153,7 @@
         $lugar = $_POST["lugar"];
         $preco = $_POST["preco"];
         $avaliacao = $_POST["avaliacao"];
+        echo $preco;
 
     }
     ?>
@@ -204,7 +205,7 @@
                                         <!-- COMENTÁRIOS -->
 
                                         <?php
-                                        $result = $conn->query("SELECT * FROM comment WHERE trip='{$id}'") or die($conn->error);
+                                        $result = $conn->query("SELECT * FROM comment WHERE trip='{$id}'");
                                         ?>
                                         <table>
                                             <?php 

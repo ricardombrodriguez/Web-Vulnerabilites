@@ -60,6 +60,9 @@
 						if (isset($_POST['bttn']) && !empty($_POST['email'])) {
 							$mail = $_POST['email'];
 							$pass = $_POST['pass'];
+
+							$_SESSION['email'] = $mail;
+							$_SESSION['pass'] = $pass;
 							
 							$q = "SELECT * FROM users where email='".$mail."' AND pass = '".$pass."'" ;
 							if (!mysqli_query($conn,$q))
