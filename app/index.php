@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +24,6 @@
 <!--===============================================================================================-->
 </head>
 <body>
-<?php include "connection.php" ?>
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('img/banner/travel_HD.jpg'); background-position: center;  background-repeat: no-repeat; background-size: cover;">
 			<div class="wrap-login100">
@@ -56,31 +57,13 @@
 							</button>
 					</div>
 
-					<?php 
-						if (isset($_POST['bttn']) && !empty($_POST['email'])) {
-							$mail = $_POST['email'];
-							$pass = $_POST['pass'];
-							
-							$q = "SELECT * FROM users where email='".$mail."' AND pass = '".$pass."'" ;
-							if (!mysqli_query($conn,$q))
-							{
-								echo 'Error: ' . mysqli_error($conn);
-							}else{
-							
-								$result = mysqli_query($conn,$q);
+						<input type="text" name="regName" value="">
 
-								$row = mysqli_fetch_array($result);
+					<form method="POST" action="home.php">
+						<input type="text" name="regName" value="">
+						<input type="submit">
+					</form>
 
-								if ($row) {
-									// header('location: home.php');
-									echo "<script> location.replace('home.php'); </script>";
-								} else {
-									echo "<div class=\"container-login100-form-btn\" ><p style=\" color: red\">Email ou Password errados :(</p> </div>";
-								}
-							}
-						}
-					?>
-<!-- 
 					<div class="text-center p-t-12">
 						<span class="txt1">
 							Forgot
@@ -88,7 +71,42 @@
 						<a class="txt2" href="#">
 							Username / Password?
 						</a>
-					</div> -->
+					</div> 
+
+					<?php
+						include("connection.php");
+						if (isset($_POST['bttn']) && !empty($_POST['email'])) {
+
+							$mail = $_POST['email'];
+							$pass = $_POST['pass'];
+							
+							$q = "SELECT * FROM users where email='".$mail."' AND pass = '".$pass."'" ;
+							if (!mysqli_query($conn,$q))
+							{
+								echo 'Error: ' . mysqli_error($conn);
+							} else{
+							
+								$result = mysqli_query($conn,$q);
+
+								// $current_user -> Variável que vai guardar o utilizador atual durante a sessão no servidor (para fazer comments e isso...)
+								$current_user = mysqli_fetch_array($result);
+
+								$_SESSION['user_nome'] = $current_user['nome'];
+								$_SESSION['user_id'] = $current_user['id'];
+								$_SESSION['user_email'] = $current_user['email'];
+
+								if ($current_user) {
+									// header('location: home.php');
+
+									echo "<script> location.replace('home.php'); </script>";
+									
+								} else {
+									echo "<div class=\"container-login100-form-btn\" ><p style=\" color: red\">Email ou Password errados :(</p> </div>";
+								}
+							}
+						}
+					?>
+
 
 					<div class="text-center p-t-136">
 						<a class="txt2" href="./create.php">
