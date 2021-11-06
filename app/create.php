@@ -71,7 +71,6 @@
 						if (isset($_POST['submit_btn'])){
 							
 							if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['pass'])){
-								echo "here";
 								$name = $_POST['name'];
 								$email = $_POST['email'];
 								$pass = $_POST['pass'];
