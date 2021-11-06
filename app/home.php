@@ -223,8 +223,17 @@
                                 </form>
 					        </tr>
 
+                            <?php 
+
+                            if (isset($_POST["trip_id"])) {
+                                                        
+                                $_SESSION['trip_id'] = $row['id'];
+
+                            }
+                            ?>
+
                         <?php endforeach; ?>
-                    
+
 					    </tbody>
 					  </table>
 					</div>

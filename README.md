@@ -22,6 +22,8 @@
 * **CWE-476** NULL Pointer Dereference
 * **CWE-601** URL Redirection to Untrusted Site ('Open Redirect')
 * **CWE-798** Use of Hard-coded Credentials
+* **CWE-522** Insufficiently Protected Credentials
+* **CWE-521** Weak Password Requirements
 
 ## **SQL Database**
 
