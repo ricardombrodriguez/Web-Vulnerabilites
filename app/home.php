@@ -1,3 +1,7 @@
+<?php 
+session_start();
+include("connection.php");
+?>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -26,10 +30,6 @@
 </head>
 
 <body>
-    <?php include "connection.php" ?>
-    <?php 
-        echo $_POST['email'];
-    ?>
 
     <?php
     $result = $conn->query("SELECT * FROM trips") or die($conn->error);
@@ -219,15 +219,7 @@
                                 </form>
 					        </tr>
 
-                            <?php 
-
-                            if (isset($_POST["trip_id"])) {
-                                                        
-                                $_SESSION['trip_id'] = $row['id'];
-
-                            }
-                            ?>
-
+                            
                         <?php endforeach; ?>
 
 					    </tbody>

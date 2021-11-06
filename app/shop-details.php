@@ -140,12 +140,12 @@ include("connection.php");
     <?php
     if (isset($_POST["trip_id"])) {
 
-    $id = $_POST["trip_id"];
-    $nome = $_POST["nome"];
-    $descricao = $_POST["descricao"];
-    $lugar = $_POST["lugar"];
-    $preco = $_POST["preco"];
-    $avaliacao = $_POST["avaliacao"];
+    $_SESSION['id'] = $_POST["trip_id"];
+    $_SESSION['nome'] = $_POST["nome"];
+    $_SESSION['descricao'] = $_POST["descricao"];
+    $_SESSION['lugar'] = $_POST["lugar"];
+    $_SESSION['preco'] = $_POST["preco"];
+    $_SESSION['avaliacao'] = $_POST["avaliacao"];
 
     }
     ?>
@@ -164,11 +164,11 @@ include("connection.php");
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <div class="product__details__text">
-                        <h2><?php echo $lugar; ?></h2>
-                        <h3><?php echo $nome; ?></h3>
-                        <p><b>Avaliação: </b><?php echo $avaliacao; ?>/5</p>
-                        <div class="product__details__price"><?php echo $preco; ?>€</div>
-                        <p><?php echo $descricao; ?></p>
+                        <h2><?php echo $_SESSION['lugar']; ?></h2>
+                        <h3><?php echo $_SESSION['nome;'] ?></h3>
+                        <p><b>Avaliação: </b><?php echo $_SESSION['avaliacao']; ?>/5</p>
+                        <div class="product__details__price"><?php echo $_SESSION['preco']; ?>€</div>
+                        <p><?php echo $_SESSION['descricao']; ?></p>
                         <div class="product__details__quantity">
                             <div class="quantity">
                                 <div class="pro-qty">
@@ -200,20 +200,18 @@ include("connection.php");
                                             
                                             <?php
 
-                                            echo "ola";
-                                            echo $_SESSION['trip_id'];
+                                            if (isset($_POST['comment']))
+                                            {
 
-                                        
-                                            if (isset($_GET["comment"])) {
-
-                                                $query = "INSERT INTO comment VALUES ({$_SESSION['trip_id']},{$_SESSION['user_id']},'{$_GET["comment"]}')";
-                                                echo $query;
-                                                $result = mysqli_query($conn,$q);
+                                                $query = "INSERT INTO comment (trip, autor, texto) VALUES ({$_SESSION['id']}, {$_SESSION['user_id']}, '".$_POST['comment']."')";
+                    
+                                                $result = mysqli_query($conn,$query);
 
                                                 if (!$result){
                                                     echo "<div class=\"container-login100-form-btn\" ><p style=\" color: red\">Invalid comment.</p> </div>";
 
                                                 }
+
                                             }
                                             ?>
 
@@ -223,7 +221,7 @@ include("connection.php");
                                         <!-- COMENTÁRIOS -->
                                         <?php
 
-                                        $resultado = $conn->query("SELECT * FROM comment WHERE trip='{$id}'") or die($conn->error);
+                                        $resultado = $conn->query("SELECT * FROM comment WHERE trip='{$_SESSION['id']}'") or die($conn->error);
                                         ?>
                                         <table>
                                             <?php 
