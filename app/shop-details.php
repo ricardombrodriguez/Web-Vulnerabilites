@@ -165,7 +165,7 @@ include("connection.php");
                 <div class="col-lg-6 col-md-6">
                     <div class="product__details__text">
                         <h2><?php echo $_SESSION['lugar']; ?></h2>
-                        <h3><?php echo $_SESSION['nome']; ?></h3>
+                        <h3><?php echo $_SESSION['nome;'] ?></h3>
                         <p><b>Avaliação: </b><?php echo $_SESSION['avaliacao']; ?>/5</p>
                         <div class="product__details__price"><?php echo $_SESSION['preco']; ?>€</div>
                         <p><?php echo $_SESSION['descricao']; ?></p>
@@ -200,7 +200,8 @@ include("connection.php");
                                             
                                             <?php
 
-                                            if (isset($_POST['comment'])) {
+                                            if (isset($_POST['comment']))
+                                            {
 
                                                 $query = "INSERT INTO comment (trip, autor, texto) VALUES ({$_SESSION['id']}, {$_SESSION['user_id']}, '".$_POST['comment']."')";
                     
@@ -210,6 +211,7 @@ include("connection.php");
                                                     echo "<div class=\"container-login100-form-btn\" ><p style=\" color: red\">Invalid comment.</p> </div>";
 
                                                 }
+
                                             }
                                             ?>
 
