@@ -63,8 +63,50 @@ insert into `users` (`nome`,`email`,`pass`) values ('Harlan Gaukrodge', 'hgaukro
 
 
 -- INSERTS COMMENTS
-INSERT INTO `comment` (`trip`,`autor`,`texto`) VALUES (7,4,'ipsum porta elit, a feugiat tellus lorem eu metus. In lorem. Donec');
-INSERT INTO `comment` (`trip`,`autor`,`texto`) VALUES (5,9,'gravida mauris ut mi. Duis risus odio, auctor vitae, aliquet nec, imperdiet nec,');
-INSERT INTO `comment` (`trip`,`autor`,`texto`) VALUES (4,6,'Morbi quis urna. Nunc quis arcu vel quam dignissim pharetra. Nam ac');
-INSERT INTO `comment` (`trip`,`autor`,`texto`) VALUES (2,3,'mauris elit, dictum eu, eleifend nec, malesuada ut, sem. Nulla interdum. Curabitur dictum. Phasellus');
-INSERT INTO `comment` (`trip`,`autor`,`texto`) VALUES (9,6,'ac metus vitae velit egestas lacinia. Sed');
+INSERT INTO `comment` (`trip`,`autor`,`texto`)
+VALUES
+  (7,4,"ipsum porta elit, a feugiat tellus lorem eu metus. In lorem. Donec"),
+  (5,9,"gravida mauris ut mi. Duis risus odio, auctor vitae, aliquet nec, imperdiet nec,"),
+  (4,6,"Morbi quis urna. Nunc quis arcu vel quam dignissim pharetra. Nam ac"),
+  (2,3,"mauris elit, dictum eu, eleifend nec, malesuada ut, sem. Nulla interdum. Curabitur dictum. Phasellus"),
+  (9,6,"ac metus vitae velit egestas lacinia. Sed");
+
+INSERT INTO `comment` (`trip`,`autor`,`texto`)
+VALUES
+  (1,6,"ipsum leo elementum sem, vitae aliquam eros turpis non enim. Mauris quis turpis"),
+  (7,5,"Nulla dignissim. Maecenas ornare egestas ligula. Nullam feugiat placerat"),
+  (6,7,"Duis ac arcu. Nunc mauris. Morbi"),
+  (9,2,"tellus non magna. Nam ligula elit,"),
+  (8,2,"velit. Cras lorem lorem, luctus ut,");
+
+INSERT INTO `comment` (`trip`,`autor`,`texto`)
+VALUES
+  (6,4,"ligula. Nullam enim. Sed nulla ante, iaculis nec, eleifend non, dapibus rutrum, justo. Praesent luctus."),
+  (9,5,"commodo tincidunt nibh. Phasellus nulla. Integer vulputate, risus a"),
+  (5,10,"Phasellus elit pede, malesuada vel, venenatis vel, faucibus id, libero. Donec consectetuer mauris"),
+  (5,6,"interdum. Curabitur dictum. Phasellus in felis. Nulla tempor augue"),
+  (11,9,"cursus in, hendrerit consectetuer, cursus et, magna. Praesent");
+
+INSERT INTO `comment` (`trip`,`autor`,`texto`)
+VALUES
+  (5,4,"luctus et ultrices posuere cubilia Curae Phasellus ornare. Fusce mollis. Duis sit amet diam"),
+  (6,10,"pede. Nunc sed orci lobortis augue scelerisque mollis. Phasellus libero mauris, aliquam eu, accumsan"),
+  (4,6,"at risus. Nunc ac sem ut dolor dapibus gravida. Aliquam tincidunt,"),
+  (9,7,"Vivamus nibh dolor, nonummy ac, feugiat"),
+  (7,2,"posuere cubilia Curae Phasellus ornare. Fusce mollis. Duis sit amet diam");
+
+INSERT INTO `comment` (`trip`,`autor`,`texto`)
+VALUES
+  (9,4,"justo faucibus lectus, a sollicitudin orci sem eget massa. Suspendisse eleifend. Cras sed leo."),
+  (7,8,"Curabitur vel lectus. Cum sociis natoque penatibus"),
+  (2,8,"Mauris nulla. Integer urna. Vivamus molestie dapibus ligula. Aliquam erat"),
+  (8,7,"ut, sem. Nulla interdum. Curabitur dictum. Phasellus in felis. Nulla tempor augue ac"),
+  (2,7,"erat, in consectetuer ipsum nunc id enim.");
+
+INSERT INTO `comment` (`trip`,`autor`,`texto`)
+VALUES
+  (9,8,"dolor sit amet, consectetuer adipiscing elit. Aliquam auctor, velit eget laoreet posuere, enim nisl"),
+  (9,5,"augue id ante dictum cursus. Nunc"),
+  (1,3,"tincidunt, nunc ac mattis ornare, lectus ante dictum mi, ac mattis velit justo nec"),
+  (11,5,"elit pede, malesuada vel, venenatis vel, faucibus"),
+  (11,7,"rhoncus. Nullam velit dui, semper et,");
