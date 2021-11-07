@@ -77,7 +77,7 @@
 						include("connection.php");
 
 						// IMPRIMIR TODOS OS USERS E PASS
-						/* $sql = "SELECT * FROM users";
+/* 						$sql = "SELECT * FROM users";
 						$result = $conn->query($sql);
 
 						if ($result->num_rows > 0) {
@@ -94,36 +94,30 @@
 							$mail = $_POST['email'];
 							$pass = $_POST['pass'];
 
-							if ($mail == "admin") {
-								echo "<script> location.replace('home.php'); </script>";
-							
+							$q = "SELECT * FROM users WHERE email='".$mail."' AND pass = '".$pass."'" ;
+
+							if (!mysqli_query($conn,$q))
+							{
+								echo 'Error: ' . mysqli_error($conn);
 							} else {
-								$q = "SELECT * FROM users WHERE email='".$mail."' AND pass = '".$pass."'" ;
+							
+								$result = mysqli_query($conn,$q);
 
-								if (!mysqli_query($conn,$q))
-								{
-									echo 'Error: ' . mysqli_error($conn);
+								// $current_user -> Variável que vai guardar o utilizador atual durante a sessão no servidor (para fazer comments e isso...)
+								$current_user = mysqli_fetch_array($result);
+
+								if ($current_user) {
+									// header('location: home.php');
+
+									$_SESSION['user_nome'] = $current_user['nome'];
+									$_SESSION['user_id'] = $current_user['id'];
+									$_SESSION['user_email'] = $current_user['email'];	
+
+									echo "<script> location.replace('home.php'); </script>";
+									
 								} else {
-								
-									$result = mysqli_query($conn,$q);
-
-									// $current_user -> Variável que vai guardar o utilizador atual durante a sessão no servidor (para fazer comments e isso...)
-									$current_user = mysqli_fetch_array($result);
-
-									if ($current_user) {
-										// header('location: home.php');
-
-										$_SESSION['user_nome'] = $current_user['nome'];
-										$_SESSION['user_id'] = $current_user['id'];
-										$_SESSION['user_email'] = $current_user['email'];	
-
-										echo "<script> location.replace('home.php'); </script>";
-										
-									} else {
-										echo "<div class=\"container-login100-form-btn\" ><p style=\" color: red\">Credenciais erradas! Tente novamente.</p> </div>";
-									}
+									echo "<div class=\"container-login100-form-btn\" ><p style=\" color: red\">Credenciais erradas! Tente novamente.</p> </div>";
 								}
-
 							}
 							
 							

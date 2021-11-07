@@ -26,6 +26,18 @@ include("connection.php");
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+
+    <style>
+        input[type="file"] {
+            display: none;
+        }
+        .custom-file-upload {
+            border: 1px solid #ccc;
+            display: inline-block;
+            padding: 6px 12px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body>
@@ -104,8 +116,8 @@ include("connection.php");
                 <div class="col-lg-3">
                     <div class="header__cart">
                         <ul>
-                            <li><a href="./login.html"><i class="fa fa-user"></i> <span></span></a></li>
-                            <li><a href="./shoping-cart.html"><i class="fa fa-shopping-bag"></i> <span></span></a></li>
+                            <li><a href="./index.php"><i class="fa fa-user"></i> <span></span></a></li>
+                            <li><a href="./shoping-cart.php"><i class="fa fa-shopping-bag"></i> <span></span></a></li>
                         </ul>
                         <div class="header__cart__price">item: <span>$150.00</span></div>
                     </div>
@@ -196,12 +208,35 @@ include("connection.php");
                                         <!-- INTRODUZIR COMENTÁRIO -->
                                         <form method="POST">
                                             
-                                            <div class="d-flex flex-row add-comment-section mt-4 mb-4"><input type="text" class="form-control mr-3" placeholder="Add comment" name="comment"><button type="submit" class="btn btn-primary" style="text-align: center;">Comment</button></div>
+                                            <div class="d-flex flex-row add-comment-section mt-4 mb-4">
+                                                
+                                                <input type="text" class="form-control mr-3" placeholder="Add comment" name="comment">
+                                                <label for="file-upload" class="custom-file-upload"><i class="fa fa-cloud-upload"></i></label>
+                                                <input id="file-upload" type="file"/>
+
+                                            
+                                                <button type="submit" class="btn btn-primary" style="text-align: center;">Comment</button>
+                                                
+                                            </div>
                                             
                                             <?php
 
-                                            if (isset($_POST['comment']))
-                                            {
+                                            // Define the target location where the picture being
+
+                                            // uploaded is going to be saved.
+/*                                             $target = "img/" . basename($_FILES['uploadedfile']['name']);
+
+                                            // Move the uploaded file to the new location.
+                                            if(move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target)) {
+                                                echo "The picture has been successfully uploaded.";
+
+                                            } else {
+                                                echo "There was an error uploading the picture, please try again.";
+                                            } */
+
+
+                                        
+                                            if (isset($_POST['comment'])) {
 
                                                 $query = "INSERT INTO comment (trip, autor, texto) VALUES ({$_SESSION['id']}, {$_SESSION['user_id']}, '".$_POST['comment']."')";
                     
@@ -220,8 +255,7 @@ include("connection.php");
 
                                         <!-- COMENTÁRIOS -->
                                         <?php
-
-                                        $resultado = $conn->query("SELECT * FROM comment WHERE trip='{$_SESSION['id']}'") or die($conn->error);
+                                        $resultado = $conn->query("SELECT * FROM comment WHERE trip='{$_SESSION['id']}'") ;
                                         ?>
                                         <table>
                                             <?php 
@@ -229,7 +263,7 @@ include("connection.php");
 
                                                     <?php
                                                     $autor_id = $row['autor'];
-                                                    $user = $conn->query("SELECT * FROM users WHERE id='{$autor_id}'") or die($conn->error);
+                                                    $user = $conn->query("SELECT * FROM users WHERE id='{$autor_id}'") ;
 
                                                     foreach($user as $u): ?>
                                             
@@ -238,7 +272,9 @@ include("connection.php");
                                                             <div class="d-flex flex-row align-items-center commented-user">
                                                                 <h5 class="mr-2"><b><?php echo $u['nome']; ?></b></h5>
                                                             </div>
-                                                            <div class="comment-text-sm"><span><?php echo $row['texto']; ?></span></div>
+                                                            <div class="comment-text-sm">
+                                                                    <span><?php echo $row['texto']; ?></span>
+                                                            </div>
                                                         </tr>
                                                         <br>
                             
