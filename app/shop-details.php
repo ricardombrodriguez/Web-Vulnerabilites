@@ -131,7 +131,7 @@ include("connection.php");
     <!-- Header Section End -->
     
     <!-- Hero Section Begin -->
-<!--     <section class="hero hero-normal">
+    <section class="hero hero-normal">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -146,7 +146,7 @@ include("connection.php");
                 </div>
             </div>
         </div>
-    </section> -->
+    </section>
     <!-- Hero Section End -->
 
     <?php
@@ -177,7 +177,7 @@ include("connection.php");
                 <div class="col-lg-6 col-md-6">
                     <div class="product__details__text">
                         <h2><?php echo $_SESSION['lugar']; ?></h2>
-                        <h3><?php echo $_SESSION['nome;'] ?></h3>
+                        <h3><?php echo $_SESSION['nome']; ?></h3>
                         <p><b>Avaliação: </b><?php echo $_SESSION['avaliacao']; ?>/5</p>
                         <div class="product__details__price"><?php echo $_SESSION['preco']; ?>€</div>
                         <p><?php echo $_SESSION['descricao']; ?></p>
