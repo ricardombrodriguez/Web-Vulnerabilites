@@ -218,30 +218,19 @@ include("connection.php");
                                             
                                             <?php
 
-                                            // Define the target location where the picture being
-
-                                            // uploaded is going to be saved.
-/*                                             $target = "img/" . basename($_FILES['uploadedfile']['name']);
-
-                                            // Move the uploaded file to the new location.
-                                            if(move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target)) {
-                                                echo "The picture has been successfully uploaded.";
-
-                                            } else {
-                                                echo "There was an error uploading the picture, please try again.";
-                                            } */
-
-
                                         
                                             if (isset($_POST['comment'])) {
 
-                                                $query = "INSERT INTO comment (trip, autor, texto) VALUES ({$_SESSION['id']}, {$_SESSION['user_id']}, '".$_POST['comment']."')";
+                                                $temp = $_POST['comment'];
+
+                                                $comment = htmlspecialchars($temp, ENT_QUOTES, 'UTF-8');
+
+                                                $query = "INSERT INTO comment (trip, autor, texto) VALUES ({$_SESSION['id']}, {$_SESSION['user_id']}, '".$comment."')";
                     
                                                 $result = mysqli_query($conn,$query);
 
                                                 if (!$result){
                                                     echo "<div class=\"container-login100-form-btn\" ><p style=\" color: red\">Invalid comment.</p> </div>";
-
                                                 }
 
                                             }
