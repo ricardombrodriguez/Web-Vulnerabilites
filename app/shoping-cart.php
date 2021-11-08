@@ -128,7 +128,7 @@ include("connection.php");
                                 <tr>
                                     <th class="shoping__product">Trips</th>
                                     <th>Price</th>
-                                    <th>Quantity</th>
+                                    <th>Reserves</th>
                                     <th>Total</th>
                                     <th></th>
                                 </tr>
