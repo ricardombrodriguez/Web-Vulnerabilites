@@ -69,12 +69,42 @@
 
 					<?php
 						if (isset($_POST['submit_btn'])){
-							
-							if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['pass'])){
-								$name = $_POST['name'];
-								$email = $_POST['email'];
-								$pass = md5($_POST['pass']);
 
+							$n = false;
+							$e = false;
+							$p = false;
+								
+							// validar nome
+							if (!empty($_POST['name']) && preg_match("/^[a-zA-Z-' ]*$/", $_POST['name'])){
+								$name = $_POST['name'];
+								$n = true;
+								
+							} else {
+								echo "<div class=\"container-login100-form-btn\" ><p style=\" color: red\">Error! Invalid name (Only letters and white space is allowed)</p> </div>";
+							}
+
+							// validar email valido
+							if (!empty($_POST['email']) && filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+								$email = $_POST['email'];
+								$e = true;
+							} else {
+								echo "<div class=\"container-login100-form-btn\" ><p style=\" color: red\">Error! Invalid email (aaa@bbb.ccc format)</p> </div>";
+							}
+
+							// Validate password strength
+							$uppercase    = preg_match('@[A-Z]@', $_POST['pass']);
+							$lowercase    = preg_match('@[a-z]@', $_POST['pass']);
+							$number       = preg_match('@[0-9]@', $_POST['pass']);
+							$specialChars = preg_match('@[^\w]@', $_POST['pass']);
+
+							if(empty($_POST['pass']) || !$uppercase || !$lowercase || !$number || !$specialChars || strlen( $_POST['pass']) < 8) {
+								echo "<div class=\"container-login100-form-btn\" ><p style=\" color: red\">Error! Invalid password (Password should be at least 8 characters in length and should include at least one upper case letter, one number, and one special character)</p> </div>";
+							}else{
+								$pass = md5($_POST['pass']);
+								$p = true;
+							}
+							
+							if ($n && $e && $p){
 								// Use prepared statements to mitigate SQL injection attacks.
 								$sql = "INSERT INTO `users` (`nome`, `email`, `pass`) VALUES ('$name', '$email', '$pass')";
 								$result = mysqli_query($conn, $sql);	
@@ -82,11 +112,9 @@
 								if ($result) {	// se faz o insert com sucesso na base de dados retorna true
 									echo "<script> location.replace('home.php'); </script>";
 								}
-								mysqli_close($conn);
-
-							} else {
-								echo "<div class=\"container-login100-form-btn\" ><p style=\" color: red\">Erro! Verifica q todos os campos estão preenchidos</p> </div>";
 							}
+							
+							mysqli_close($conn);
 						}
 					?>
 

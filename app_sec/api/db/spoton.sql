@@ -60,6 +60,7 @@ insert into `users` (`nome`,`email`,`pass`) values ('Waylan Slimon', 'wslimon6@s
 insert into `users` (`nome`,`email`,`pass`) values ('Ricardo Dermott', 'rdermott7@va.gov', MD5('WDQ9pgWSWc'));
 insert into `users` (`nome`,`email`,`pass`) values ('Cal Petriello', 'cpetriello8@irs.gov', MD5('8jdrunVIx7'));
 insert into `users` (`nome`,`email`,`pass`) values ('Harlan Gaukrodge', 'hgaukrodge9@de.vu', MD5('rTfQ8TXEd9n'));
+insert into `users` (`nome`,`email`,`pass`) values ('DX', 'leitono@dil.papi', MD5('esti8'));
 
 
 -- INSERTS COMMENTS
