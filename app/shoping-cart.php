@@ -126,7 +126,7 @@ include("connection.php");
                         <table>
                             <thead>
                                 <tr>
-                                    <th class="shoping__product">Products</th>
+                                    <th class="shoping__product">Trips</th>
                                     <th>Price</th>
                                     <th>Quantity</th>
                                     <th>Total</th>
@@ -143,39 +143,30 @@ include("connection.php");
                                     echo "<div class=\"container-login100-form-btn\" ><p style=\" color: red\">You don't have a trip in your cart.</p> </div>";
                                 } 
 
-
+                                $total = 0;
                                 foreach($result as $trip): ?>
-
-                                    <?php
-                                    echo $trip;
-                                    ?>
-
                                     <tr>
                                         <td class="shoping__cart__item">
                                             <img src="img/cart/cart-1.jpg" alt="">
-                                            <h5><?php echo $trip['trips.nome']; ?></h5>
+                                            <h5><?php echo $trip["nome"]; ?></h5>
                                         </td>
                                         <td class="shoping__cart__price">
-                                            <?php echo $trip['trips.preco']; ?>
+                                            <?php echo $trip["preco"]; ?>€
                                         </td>
                                         <td class="shoping__cart__quantity">
-                                            <div class="quantity">
-                                                <div class="pro-qty">
-                                                    <input type="text" value="<?php echo $trip['users_trips.quantidade']; ?>">
-                                                </div>
-                                            </div>
+                                            <?php echo $trip["quantidade"]; ?>
                                         </td>
                                         <td class="shoping__cart__total">
                                             <?php
-                                                $total = $trip['users_trips.quantidade']*$trip['trips.preco'];
-                                                echo $total;
+                                                $price = $trip["quantidade"]*$trip["preco"];
+                                                $total += $price;
+                                                echo $price;
                                             ?>€
                                         </td>
                                         <td class="shoping__cart__item__close">
                                             <span class="icon_close"></span>
                                         </td>
                                     </tr>
-
                                 <?php endforeach; ?>
 
                             </tbody>
@@ -199,8 +190,7 @@ include("connection.php");
                     <div class="shoping__checkout">
                         <h5>Cart Total</h5>
                         <ul>
-                            <li>Subtotal <span>$454.98</span></li>
-                            <li>Total <span>$454.98</span></li>
+                            <li>Total <span><?php echo $total; ?>€</span></li>
                         </ul>
                         <a href="#" class="primary-btn">PROCEED TO CHECKOUT</a>
                     </div>
