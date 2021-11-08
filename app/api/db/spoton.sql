@@ -1,7 +1,6 @@
 create database if not exists `spoton` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 use `spoton`;
 
-
 create table if not exists `users` (
     `id` INT NOT NULL AUTO_INCREMENT ,
     `nome` VARCHAR(100) NOT NULL,
@@ -30,6 +29,15 @@ create table if not exists `comment` (
     `texto` VARCHAR(300),
     FOREIGN KEY (`autor`) references users(`id`),
     FOREIGN KEY (`trip`) references trips(`id`)
+);
+go
+
+create table if not exists `users_trips` (
+    `user_id` INT NOT NULL,
+    `trip_id` INT NOT NULL,
+    `quantidade` INT NOT NULL,
+    FOREIGN KEY (`user_id`) references users(`id`),
+    FOREIGN KEY (`trip_id`) references trips(`id`)
 );
 go
 
@@ -110,14 +118,3 @@ VALUES
   (1,3,"tincidunt, nunc ac mattis ornare, lectus ante dictum mi, ac mattis velit justo nec"),
   (11,5,"elit pede, malesuada vel, venenatis vel, faucibus"),
   (11,7,"rhoncus. Nullam velit dui, semper et,");
-
-
-
-create table if not exists `users_trips` (
-  `user_id` INT NOT NULL PRIMARY KEY,
-  `trip_id` INT NOT NULL PRIMARY KEY,
-  `quantidade` INT NOT NULL,
-  FOREIGN KEY (`user_id`) references users(`id`),
-  FOREIGN KEY (`trip_id`) references trips(`id`)
-);
-go

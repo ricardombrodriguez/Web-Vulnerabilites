@@ -134,29 +134,50 @@ include("connection.php");
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td class="shoping__cart__item">
-                                        <img src="img/cart/cart-1.jpg" alt="">
-                                        <h5>Vegetable’s Package</h5>
-                                    </td>
-                                    <td class="shoping__cart__price">
-                                        $55.00
-                                    </td>
-                                    <td class="shoping__cart__quantity">
-                                        <div class="quantity">
-                                            <div class="pro-qty">
-                                                <input type="text" value="1">
+                            <?php
+
+                                $q = "SELECT trips.nome, trips.id, trips.preco, users_trips.quantidade from users_trips INNER JOIN trips ON trips.id=users_trips.trip_id WHERE `user_id`={$_SESSION['user_id']}";
+                                $result = mysqli_query($conn,$q);
+
+                                if($result->num_rows == 0){
+                                    echo "<div class=\"container-login100-form-btn\" ><p style=\" color: red\">You don't have a trip in your cart.</p> </div>";
+                                } 
+
+
+                                foreach($result as $trip): ?>
+
+                                    <?php
+                                    echo $trip;
+                                    ?>
+
+                                    <tr>
+                                        <td class="shoping__cart__item">
+                                            <img src="img/cart/cart-1.jpg" alt="">
+                                            <h5><?php echo $trip['trips.nome']; ?></h5>
+                                        </td>
+                                        <td class="shoping__cart__price">
+                                            <?php echo $trip['trips.preco']; ?>
+                                        </td>
+                                        <td class="shoping__cart__quantity">
+                                            <div class="quantity">
+                                                <div class="pro-qty">
+                                                    <input type="text" value="<?php echo $trip['users_trips.quantidade']; ?>">
+                                                </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                    <td class="shoping__cart__total">
-                                        $110.00
-                                    </td>
-                                    <td class="shoping__cart__item__close">
-                                        <span class="icon_close"></span>
-                                    </td>
-                                </tr>
-                            
+                                        </td>
+                                        <td class="shoping__cart__total">
+                                            <?php
+                                                $total = $trip['users_trips.quantidade']*$trip['trips.preco'];
+                                                echo $total;
+                                            ?>€
+                                        </td>
+                                        <td class="shoping__cart__item__close">
+                                            <span class="icon_close"></span>
+                                        </td>
+                                    </tr>
+
+                                <?php endforeach; ?>
+
                             </tbody>
                         </table>
                     </div>

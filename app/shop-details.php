@@ -184,32 +184,32 @@ include("connection.php");
                             <div class="product__details__quantity">
                                 <div class="quantity">
                                     <div class="pro-qty">
-                                        <input type="text" name="quantidade" value="1">
+                                        <input type="text" name="quantidade" id="quantidade" value="1">
                                     </div>
                                 </div>
                             </div>
                             <button name="add_to_cart" type="submit" class="primary-btn">ADD TO CARD</button>
                         </form>
-                        
                         <?php
 
                             if (isset($_POST['add_to_cart'])) {
 
-                                $query = "INSERT INTO users_trips (`user_id`, trip_id, quantidade) VALUES ({$_SESSION['user_id']}, {$_SESSION['id']}, {$_POST['quantidade']})";
-                                echo $query;
+                                $query = "SELECT * FROM users_trips WHERE `user_id`={$_SESSION['user_id']} AND trip_id={$_SESSION['id']}";
                                 $result = mysqli_query($conn,$query);
-
-                                if (!$result){
-                                    echo "<div class=\"container-login100-form-btn\" ><p style=\" color: red\">ERROR in adding trip to cart.</p> </div>";
-
+                                if($result->num_rows != 0){
+                                    echo "<div class=\"container-login100-form-btn\" ><p style=\" color: red\">ERROR in adding trip to cart. It already exists (go to shopping cart)</p> </div>";
                                 } else {
-                                    header("Location: http://http://localhost:5000/home.php");
-                                    exit();
-                                }
+                                    $query = "INSERT INTO users_trips (`user_id`, trip_id, quantidade) VALUES ({$_SESSION['user_id']}, {$_SESSION['id']}, {$_POST['quantidade']})";
+                                    $result = mysqli_query($conn,$query);
 
+                                    if (!$result){
+                                        echo "<div class=\"container-login100-form-btn\" ><p style=\" color: red\">ERROR in adding trip to cart.</p> </div>";
+                                    } else {
+                                        echo "<script> location.replace('shoping-cart.php'); </script>";
+                                    }
+                                }
                             }
                         ?>
-                        
 
                     </div>
                 </div>
