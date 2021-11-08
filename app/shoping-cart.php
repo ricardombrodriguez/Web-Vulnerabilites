@@ -63,7 +63,7 @@ include("connection.php");
         </div>
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
-                <li><a href="./index.php">Shop</a></li>
+                <li><a href="./home.php">Shop</a></li>
                 <li><a href="./contact.php">Contact</a></li>
             </ul>
         </nav>
@@ -89,13 +89,13 @@ include("connection.php");
             <div class="row">
                 <div class="col-lg-3">
                     <div class="header__logo">
-                        <a href="./index.php"><img src="img/logo.png" height="60px" alt=""></a>
+                        <a href="./home.php"><img src="img/logo.png" height="60px" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <nav class="header__menu">
                         <ul>
-                            <li><a href="./index.php">Home</a></li>
+                            <li><a href="./home.php">Home</a></li>
                             <li><a href="./contact.php">Contact</a></li>
                         </ul>
                     </nav>
@@ -140,7 +140,7 @@ include("connection.php");
                                 $result = mysqli_query($conn,$q);
 
                                 if($result->num_rows == 0){
-                                    echo "<div class=\"container-login100-form-btn\" ><p style=\" color: red\">You don't have a trip in your cart.</p> </div>";
+                                    echo "<tr><td><p style=\" color: red\">You don't have a trip in your cart. Try adding one to proceed...</p> </td></tr>";
                                 } 
 
                                 $total = 0;
@@ -163,9 +163,27 @@ include("connection.php");
                                                 echo $price;
                                             ?>€
                                         </td>
-                                        <td class="shoping__cart__item__close">
-                                            <span class="icon_close"></span>
-                                        </td>
+                                        <form method="GET" action="">
+                                            <td class="shoping__cart__item__close">
+                                                <input type="hidden" name="trip_id" value="<?= $trip['id'] ?>" />
+                                                <button type="submit" class="icon_close" name="icon_close"></button>
+                                            </td>
+                                        </form>
+                                        
+                                        <?php
+                                            if (isset($_GET['trip_id'])) {
+                                                $q = "DELETE FROM users_trips WHERE `user_id`={$_SESSION["user_id"]} AND trip_id={$_GET["trip_id"]}";
+                                                $result = mysqli_query($conn,$q);
+                                            
+                                                if (!$result){
+                                                    echo("</table></div>".mysqli_error($conn));
+                                            
+                                                } else {
+                                                    echo "<script> location.replace('shoping-cart.php'); </script>";
+                                                }
+                                            }
+                                        ?>
+
                                     </tr>
                                 <?php endforeach; ?>
 
