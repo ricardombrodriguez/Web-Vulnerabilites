@@ -178,15 +178,39 @@ include("connection.php");
                         ?>
                         <div class="product__details__price"><?php echo $_SESSION['preco']; ?>€</div>
                         <p><?php echo $_SESSION['descricao']; ?></p>
-                        <div class="product__details__quantity">
-                            <div class="quantity">
-                                <div class="pro-qty">
-                                    <input type="text" value="1">
+
+                        <!-- Form para enviar dados da trip para o checkout + quantidade da mesma (adicionar ao carrinho) -->
+                        <form method="POST">
+                            <div class="product__details__quantity">
+                                <div class="quantity">
+                                    <div class="pro-qty">
+                                        <input type="text" name="quantidade" value="1">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <a href="#" class="primary-btn">ADD TO CARD</a>
-                        <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
+                            <button name="add_to_cart" type="submit" class="primary-btn">ADD TO CARD</button>
+                        </form>
+                        
+                        <?php
+
+                            if (isset($_POST['add_to_cart'])) {
+
+                                $query = "INSERT INTO users_trips (`user_id`, trip_id, quantidade) VALUES ({$_SESSION['user_id']}, {$_SESSION['id']}, {$_POST['quantidade']})";
+                                echo $query;
+                                $result = mysqli_query($conn,$query);
+
+                                if (!$result){
+                                    echo "<div class=\"container-login100-form-btn\" ><p style=\" color: red\">ERROR in adding trip to cart.</p> </div>";
+
+                                } else {
+                                    header("Location: http://http://localhost:5000/home.php");
+                                    exit();
+                                }
+
+                            }
+                        ?>
+                        
+
                     </div>
                 </div>
                 <div class="col-lg-12">
@@ -235,7 +259,7 @@ include("connection.php");
                                         
                                             if (isset($_POST['comment'])) {
 
-                                                $query = "INSERT INTO comment (trip, autor, texto) VALUES ({$_SESSION['id']}, {$_SESSION['user_id']}, '".$_POST['comment']."')";
+                                                $query = "INSERT INTO comment (trip, autor, texto) VALUES ({$_SESSION['id']}, {$_SESSION['user_id']}, {'".$_POST['comment']."'})";
                     
                                                 $result = mysqli_query($conn,$query);
 

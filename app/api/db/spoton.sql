@@ -110,3 +110,14 @@ VALUES
   (1,3,"tincidunt, nunc ac mattis ornare, lectus ante dictum mi, ac mattis velit justo nec"),
   (11,5,"elit pede, malesuada vel, venenatis vel, faucibus"),
   (11,7,"rhoncus. Nullam velit dui, semper et,");
+
+
+
+create table if not exists `users_trips` (
+  `user_id` INT NOT NULL PRIMARY KEY,
+  `trip_id` INT NOT NULL PRIMARY KEY,
+  `quantidade` INT NOT NULL,
+  FOREIGN KEY (`user_id`) references users(`id`),
+  FOREIGN KEY (`trip_id`) references trips(`id`)
+);
+go
