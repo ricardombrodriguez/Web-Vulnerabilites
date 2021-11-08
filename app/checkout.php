@@ -37,8 +37,8 @@
         </div>
         <div class="humberger__menu__cart">
             <ul>
-                <li><a href="./login.html"><i class="fa fa-user"></i> <span></span></a></li>
-                <li><a href="./shoping-cart.html"><i class="fa fa-shopping-bag"></i> <span></span></a></li>
+                <li><a href="./index.php"><i class="fa fa-user"></i> <span></span></a></li>
+                <li><a href="./shoping-cart.php"><i class="fa fa-shopping-bag"></i> <span></span></a></li>
             </ul>
             <div class="header__cart__price">item: <span>$150.00</span></div>
         </div>
@@ -53,23 +53,20 @@
                 </ul>
             </div>
             <div class="header__top__right__auth">
-                <a href="#"><i class="fa fa-user"></i> Login</a>
+                <a href="#"><i class="fa fa-user"></i> index</a>
             </div>
         </div>
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
-                <li class="active"><a href="./index.html">Home</a></li>
-                <li><a href="./shop-grid.html">Shop</a></li>
+                <li class="active"><a href="./index.php">Home</a></li>
                 <li><a href="#">Pages</a>
                     <ul class="header__menu__dropdown">
-                        <li><a href="./shop-details.html">Shop Details</a></li>
-                        <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                        <li><a href="./checkout.html">Check Out</a></li>
-                        <li><a href="./blog-details.html">Blog Details</a></li>
+                        <li><a href="./shop-details.php">Shop Details</a></li>
+                        <li><a href="./shoping-cart.php">Shoping Cart</a></li>
+                        <li><a href="./checkout.php">Check Out</a></li>
                     </ul>
                 </li>
-                <li><a href="./blog.html">Blog</a></li>
-                <li><a href="./contact.html">Contact</a></li>
+                <li><a href="./contact.php">Contact</a></li>
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
@@ -94,22 +91,22 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="header__logo">
-                        <a href="./index.html"><img src="img/logo.png" height="60px" alt=""></a>
+                        <a href="./index.php"><img src="img/logo.png" height="60px" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <nav class="header__menu">
                         <ul>
-                            <li class="active"><a href="./index.html">Shop</a></li>
-                            <li><a href="./contact.html">Contact</a></li>
+                            <li class="active"><a href="./home.php">Shop</a></li>
+                            <li><a href="./contact.php">Contact</a></li>
                         </ul>
                     </nav>
                 </div>
                 <div class="col-lg-3">
                     <div class="header__cart">
                         <ul>
-                            <li><a href="./login.html"><i class="fa fa-user"></i> <span></span></a></li>
-                            <li><a href="./shoping-cart.html"><i class="fa fa-shopping-bag"></i> <span></span></a></li>
+                            <li><a href="./index.php"><i class="fa fa-user"></i> <span></span></a></li>
+                            <li><a href="./shoping-cart.php"><i class="fa fa-shopping-bag"></i> <span></span></a></li>
                         </ul>
                         <div class="header__cart__price">item: <span>$150.00</span></div>
                     </div>
@@ -199,30 +196,48 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="checkout__input__checkbox">
-                                <label for="acc">
-                                    Create an account?
-                                    <input type="checkbox" id="acc">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-                            <p>Create an account by entering the information below. If you are a returning customer
-                                please login at the top of the page</p>
+                            <h4>Payment Information</h4>
                             <div class="checkout__input">
-                                <p>Account Password<span>*</span></p>
-                                <input type="text">
+                                <p>Cardholder Name<span>*</span></p></p>
+                                <input type="text" name="name" required />
                             </div>
-                            <div class="checkout__input__checkbox">
-                                <label for="diff-acc">
-                                    Ship to a different address?
-                                    <input type="checkbox" id="diff-acc">
-                                    <span class="checkmark"></span>
-                                </label>
+                            <div class="checkout__input">
+                                <p>Card Number<span>*</span></p></p>
+                                <input type="number" class="checkout__input" name="card_number" id="card_number" required />
+                            </div>
+                            <div class="row">
+                                <div class="checkout__input">
+                                    <p>Card Type<span>*</span></p></p>
+                                    <select class="checkout__input" name="card_type" id="card_type" required >
+                                        <option value="">--Select a Card Type--</option>
+                                        <option value="Visa">Visa</option>
+                                        <option value="RuPay">RuPay</option>
+                                        <option value="MasterCard">MasterCard</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p>Expiry<span>*</span></p>
+                                        <input type="date" class="inputbox" name="exp_date" id="exp_date" required />
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p>CVV<span>*</span></p>
+                                        <input type="password" class="inputbox" name="cvv" id="cvv" required />
+                                    </div>
+                                </div>
                             </div>
                             <div class="checkout__input">
                                 <p>Order notes<span>*</span></p>
-                                <input type="text"
-                                    placeholder="Notes about your order, e.g. special notes for delivery.">
+                                <input type="text" placeholder="Notes about your order, e.g. special notes for delivery.">
+                            </div>
+                            <div class="checkout__input__checkbox">
+                                <a class="txt2" href="./create.php">
+                                    Don't have an account? Create now!
+                                </a>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6">
@@ -236,29 +251,8 @@
                                 </ul>
                                 <div class="checkout__order__subtotal">Subtotal <span>$750.99</span></div>
                                 <div class="checkout__order__total">Total <span>$750.99</span></div>
-                                <div class="checkout__input__checkbox">
-                                    <label for="acc-or">
-                                        Create an account?
-                                        <input type="checkbox" id="acc-or">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </div>
                                 <p>Lorem ipsum dolor sit amet, consectetur adip elit, sed do eiusmod tempor incididunt
                                     ut labore et dolore magna aliqua.</p>
-                                <div class="checkout__input__checkbox">
-                                    <label for="payment">
-                                        Check Payment
-                                        <input type="checkbox" id="payment">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </div>
-                                <div class="checkout__input__checkbox">
-                                    <label for="paypal">
-                                        Paypal
-                                        <input type="checkbox" id="paypal">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </div>
                                 <button type="submit" class="site-btn">PLACE ORDER</button>
                             </div>
                         </div>

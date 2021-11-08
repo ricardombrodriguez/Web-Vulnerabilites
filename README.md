@@ -11,6 +11,7 @@
 
 ## Possíveis vulnerabilidades a explorar
 
+* **CWE-20** Improper Input Validation
 * **CWE-79** Cross-site Scripting
 * **CWE-89** SQL Injection
 * **CWE-200** Exposure of Sensitive Information to an Unauthorized Actor
@@ -20,10 +21,10 @@
 * **CWE-362** Race Condition
 * **CWE-434** Unrestricted Upload of File with Dangerous Type
 * **CWE-476** NULL Pointer Dereference
+* **CWE-521** Weak Password Requirements
+* **CWE-522** Insufficiently Protected Credentials
 * **CWE-601** URL Redirection to Untrusted Site ('Open Redirect')
 * **CWE-798** Use of Hard-coded Credentials
-* **CWE-522** Insufficiently Protected Credentials
-* **CWE-521** Weak Password Requirements
 
 ## **SQL Database**
 
@@ -44,7 +45,6 @@ Entidades
 * Shopping cart (podemos mexer com injeção de html/js ou criptografia, pq pode ter dados bancários e isso)
 Códigos de cupão (dentro da shopping cart)
 
-
 * CWE-79 : Cross-site Scripting
 * CWE-89 : SQL Injection
 * CWE-798 : Use of Hard-coded Credentials
@@ -54,12 +54,12 @@ Códigos de cupão (dentro da shopping cart)
 * CWE-476 : NULL Pointer Dereference
 * CWE-257 : Storing Passwords in a Recoverable Format
 
-
 # Docker
 
 1)
+
 ```
 docker-compose up
 ```
 
-2) Aceder http://localhost:5000/ 
+2) Aceder <http://localhost:5000/>
