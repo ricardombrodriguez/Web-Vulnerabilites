@@ -26,6 +26,22 @@ include("connection.php");
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        input[type="file"] {
+            display: none;
+        }
+        .custom-file-upload {
+            border: 1px solid #ccc;
+            display: inline-block;
+            padding: 6px 12px;
+            cursor: pointer;
+        }
+        .checked {
+            color: orange;
+        }
+    </style>
 </head>
 
 <body>
@@ -119,22 +135,7 @@ include("connection.php");
     <!-- Header Section End -->
     
     <!-- Hero Section Begin -->
-<!--     <section class="hero hero-normal">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="hero__search" id="inner">
-                        <div class="hero__search__form">
-                            <form action="#">
-                                <input type="text" placeholder="What do yo u need?">
-                                <button type="submit" class="site-btn">SEARCH</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
+
     <!-- Hero Section End -->
 
     <?php
@@ -165,8 +166,16 @@ include("connection.php");
                 <div class="col-lg-6 col-md-6">
                     <div class="product__details__text">
                         <h2><?php echo $_SESSION['lugar']; ?></h2>
-                        <h3><?php echo $_SESSION['nome;'] ?></h3>
-                        <p><b>Avaliação: </b><?php echo $_SESSION['avaliacao']; ?>/5</p>
+                        <h3><?php echo $_SESSION['nome']; ?></h3>
+                        <?php 
+                            for ($i = 0; $i <  $_SESSION['avaliacao']; $i++) {
+                                echo "<span class=\"fa fa-star checked\"></span>";
+                            }
+                            for ($i = 0; $i <  (5 -$_SESSION['avaliacao']); $i++) {
+                                echo "<span class=\"fa fa-star\"></span>";
+                            }
+
+                        ?>
                         <div class="product__details__price"><?php echo $_SESSION['preco']; ?>€</div>
                         <p><?php echo $_SESSION['descricao']; ?></p>
                         <div class="product__details__quantity">
@@ -196,12 +205,35 @@ include("connection.php");
                                         <!-- INTRODUZIR COMENTÁRIO -->
                                         <form method="POST">
                                             
-                                            <div class="d-flex flex-row add-comment-section mt-4 mb-4"><input type="text" class="form-control mr-3" placeholder="Add comment" name="comment"><button type="submit" class="btn btn-primary" style="text-align: center;">Comment</button></div>
+                                            <div class="d-flex flex-row add-comment-section mt-4 mb-4">
+                                                
+                                                <input type="text" class="form-control mr-3" placeholder="Add comment" name="comment">
+                                                <label for="file-upload" class="custom-file-upload"><i class="fa fa-cloud-upload"></i></label>
+                                                <input id="file-upload" type="file"/>
+
+                                            
+                                                <button type="submit" class="btn btn-primary" style="text-align: center;">Comment</button>
+                                                
+                                            </div>
                                             
                                             <?php
 
-                                            if (isset($_POST['comment']))
-                                            {
+                                            // Define the target location where the picture being
+
+                                            // uploaded is going to be saved.
+/*                                             $target = "img/" . basename($_FILES['uploadedfile']['name']);
+
+                                            // Move the uploaded file to the new location.
+                                            if(move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target)) {
+                                                echo "The picture has been successfully uploaded.";
+
+                                            } else {
+                                                echo "There was an error uploading the picture, please try again.";
+                                            } */
+
+
+                                        
+                                            if (isset($_POST['comment'])) {
 
                                                 $query = "INSERT INTO comment (trip, autor, texto) VALUES ({$_SESSION['id']}, {$_SESSION['user_id']}, '".$_POST['comment']."')";
                     
@@ -220,8 +252,7 @@ include("connection.php");
 
                                         <!-- COMENTÁRIOS -->
                                         <?php
-
-                                        $resultado = $conn->query("SELECT * FROM comment WHERE trip='{$_SESSION['id']}'") or die($conn->error);
+                                        $resultado = $conn->query("SELECT * FROM comment WHERE trip='{$_SESSION['id']}'") ;
                                         ?>
                                         <table>
                                             <?php 
@@ -229,7 +260,7 @@ include("connection.php");
 
                                                     <?php
                                                     $autor_id = $row['autor'];
-                                                    $user = $conn->query("SELECT * FROM users WHERE id='{$autor_id}'") or die($conn->error);
+                                                    $user = $conn->query("SELECT * FROM users WHERE id='{$autor_id}'") ;
 
                                                     foreach($user as $u): ?>
                                             
@@ -238,7 +269,9 @@ include("connection.php");
                                                             <div class="d-flex flex-row align-items-center commented-user">
                                                                 <h5 class="mr-2"><b><?php echo $u['nome']; ?></b></h5>
                                                             </div>
-                                                            <div class="comment-text-sm"><span><?php echo $row['texto']; ?></span></div>
+                                                            <div class="comment-text-sm">
+                                                                    <span><?php echo $row['texto']; ?></span>
+                                                            </div>
                                                         </tr>
                                                         <br>
                             

@@ -54,6 +54,13 @@ Códigos de cupão (dentro da shopping cart)
 * CWE-476 : NULL Pointer Dereference
 * CWE-257 : Storing Passwords in a Recoverable Format
 
+## CWE resolvidas
+
+* CWE-79 : Cross-site Scripting
+* CWE-89 : SQL Injection
+* CWE-256: Plaintext Storage of a Password
+* CWE-352: Cross-Site Request Forgery (CSRF)
+
 # Docker
 
 1)
