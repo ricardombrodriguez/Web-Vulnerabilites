@@ -197,10 +197,27 @@ include("connection.php");
                     <div class="shoping__continue">
                         <div class="shoping__discount">
                             <h5>Discount Codes</h5>
-                            <form action="#">
-                                <input type="text" placeholder="Enter your coupon code">
+                            <form action="#" method="get">
+                                <input type="text" name="coupon" placeholder="Enter your coupon code">
                                 <button type="submit" class="site-btn">APPLY COUPON</button>
                             </form>
+                            <?php
+
+                                $coupons = array("SPOTON10", "NEWYEAR10", "XMAS10", "VALENTINES10", "ILOVESIO");
+
+                                if (isset($_GET['coupon'])) {
+                                    $input = $_GET['coupon'];
+                                    if (in_array($input, $coupons))
+                                    {
+                                        $total *= 0.9;
+                                        echo "<div><p style=\" color: green\">You applicated the coupon!</p> </div>";
+                                    }
+                                  else
+                                    {
+                                        echo "<div><p style=\" color: red\">Invalid coupon!</p> </div>";
+                                    }
+                                }
+                            ?>
                         </div>
                     </div>
                 </div>

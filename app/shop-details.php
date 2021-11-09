@@ -191,7 +191,6 @@ include("connection.php");
                                                 $row = $result->fetch_row();
                                                 echo $row[3];
                                             } else {
-                                                echo $result->num_rows;
                                                 echo "1";
                                             }
                                         ?>">
