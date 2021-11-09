@@ -259,22 +259,6 @@ include("connection.php");
                                             </div>
                                             
                                             <?php
-
-                                            // Define the target location where the picture being
-
-                                            // uploaded is going to be saved.
-/*                                             $target = "img/" . basename($_FILES['uploadedfile']['name']);
-
-                                            // Move the uploaded file to the new location.
-                                            if(move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target)) {
-                                                echo "The picture has been successfully uploaded.";
-
-                                            } else {
-                                                echo "There was an error uploading the picture, please try again.";
-                                            } */
-
-
-                                        
                                             if (isset($_POST['comment'])) {
 
                                                 $temp = $_POST['comment'];
@@ -287,9 +271,7 @@ include("connection.php");
 
                                                 if (!$result){
                                                     echo "<div class=\"container-login100-form-btn\" ><p style=\" color: red\">Invalid comment.</p> </div>";
-
                                                 }
-
                                             }
                                             ?>
 

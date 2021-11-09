@@ -148,7 +148,7 @@ include("connection.php");
                                 foreach($result as $trip): ?>
                                     <tr>
                                         <td class="shoping__cart__item">
-                                            <img src="img/cart/cart-1.jpg" alt="">
+                                        <img width="100px" heigth="100px" src="img/product/<?php echo $trip['id'] ?>.jpg" alt="">
                                             <h5><?php echo $trip["nome"]; ?></h5>
                                         </td>
                                         <td class="shoping__cart__price">
