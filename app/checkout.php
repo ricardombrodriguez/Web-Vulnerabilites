@@ -1,3 +1,8 @@
+<?php 
+session_start();
+include("connection.php");
+?>
+
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -7,7 +12,7 @@
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ogani | Template</title>
+    <title>Spoton</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
@@ -40,7 +45,6 @@
                 <li><a href="./index.php"><i class="fa fa-user"></i> <span></span></a></li>
                 <li><a href="./shoping-cart.php"><i class="fa fa-shopping-bag"></i> <span></span></a></li>
             </ul>
-            <div class="header__cart__price">item: <span>$150.00</span></div>
         </div>
         <div class="humberger__menu__widget">
             <div class="header__top__right__language">
@@ -76,12 +80,6 @@
             <a href="#"><i class="fa fa-linkedin"></i></a>
             <a href="#"><i class="fa fa-pinterest-p"></i></a>
         </div>
-        <div class="humberger__menu__contact">
-            <ul>
-                <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
-                <li>Free Shipping for all Order of $99</li>
-            </ul>
-        </div>
     </div>
     <!-- Humberger End -->
 
@@ -108,7 +106,6 @@
                             <li><a href="./index.php"><i class="fa fa-user"></i> <span></span></a></li>
                             <li><a href="./shoping-cart.php"><i class="fa fa-shopping-bag"></i> <span></span></a></li>
                         </ul>
-                        <div class="header__cart__price">item: <span>$150.00</span></div>
                     </div>
                 </div>
             </div>
@@ -136,79 +133,67 @@
     <!-- Checkout Section Begin -->
     <section class="checkout spad">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h6><span class="icon_tag_alt"></span> Have a coupon? <a href="#">Click here</a> to enter your code
-                    </h6>
-                </div>
-            </div>
             <div class="checkout__form">
                 <h4>Billing Details</h4>
-                <form action="#">
+                <form class="login100-form validate-form" method="POST">
                     <div class="row">
                         <div class="col-lg-8 col-md-6">
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
-                                        <p>Fist Name<span>*</span></p>
-                                        <input type="text">
+                                        <p>First Name<span>*</span></p>
+                                        <input type="text" id="fname" name="fname">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Last Name<span>*</span></p>
-                                        <input type="text">
+                                        <input type="text" id="lname" name="lname">
                                     </div>
                                 </div>
                             </div>
                             <div class="checkout__input">
                                 <p>Country<span>*</span></p>
-                                <input type="text">
+                                <input type="text" id="country" name="country">
                             </div>
-                            <div class="checkout__input">
+                            <div class="checkout__input">  
                                 <p>Address<span>*</span></p>
-                                <input type="text" placeholder="Street Address" class="checkout__input__add">
-                                <input type="text" placeholder="Apartment, suite, unite ect (optinal)">
+                                <input type="text" name="address" id="address" placeholder="Street Address" class="checkout__input__add">
+                                <input type="text" placeholder="Apartment, suite, unite ect (optinal)">         
                             </div>
-                            <div class="checkout__input">
-                                <p>Town/City<span>*</span></p>
-                                <input type="text">
+                            <div class="checkout__input">                         
+                                <p>District/State<span>*</span></p>
+                                <input type="text" id="state" name="state">
                             </div>
-                            <div class="checkout__input">
-                                <p>Country/State<span>*</span></p>
-                                <input type="text">
+                            <div class="checkout__input">                               
+                                <p>City/Town<span>*</span></p>
+                                <input type="text" id="city" name="city">
                             </div>
                             <div class="checkout__input">
                                 <p>Postcode / ZIP<span>*</span></p>
-                                <input type="text">
+                                <input type="text" id="zip" name="zip">
                             </div>
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Phone<span>*</span></p>
-                                        <input type="text">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="checkout__input">
-                                        <p>Email<span>*</span></p>
-                                        <input type="text">
+                                        <input type="text" id="phone" name="phone">
                                     </div>
                                 </div>
                             </div>
                             <h4>Payment Information</h4>
                             <div class="checkout__input">
                                 <p>Cardholder Name<span>*</span></p></p>
-                                <input type="text" name="name" required />
+                                <input type="text" name="cardname" id="cardname"  />
                             </div>
                             <div class="checkout__input">
                                 <p>Card Number<span>*</span></p></p>
-                                <input type="number" class="checkout__input" name="card_number" id="card_number" required />
+                                <input type="number" class="checkout__input" name="cardnumber" id="cardnumber"  />
                             </div>
                             <div class="row">
                                 <div class="checkout__input">
                                     <p>Card Type<span>*</span></p></p>
-                                    <select class="checkout__input" name="card_type" id="card_type" required >
+                                    <select class="checkout__input" name="cardtype" id="cardtype"  >
                                         <option value="">--Select a Card Type--</option>
                                         <option value="Visa">Visa</option>
                                         <option value="RuPay">RuPay</option>
@@ -220,13 +205,13 @@
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Expiry<span>*</span></p>
-                                        <input type="date" class="inputbox" name="exp_date" id="exp_date" required />
+                                        <input type="date" class="inputbox" name="expdate" id="expdate"  />
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>CVV<span>*</span></p>
-                                        <input type="password" class="inputbox" name="cvv" id="cvv" required />
+                                        <input type="password" class="inputbox" name="cvv" id="cvv"  />
                                     </div>
                                 </div>
                             </div>
@@ -234,27 +219,52 @@
                                 <p>Order notes<span>*</span></p>
                                 <input type="text" placeholder="Notes about your order, e.g. special notes for delivery.">
                             </div>
-                            <div class="checkout__input__checkbox">
-                                <a class="txt2" href="./create.php">
-                                    Don't have an account? Create now!
-                                </a>
-                            </div>
                         </div>
                         <div class="col-lg-4 col-md-6">
                             <div class="checkout__order">
                                 <h4>Your Order</h4>
-                                <div class="checkout__order__products">Products <span>Total</span></div>
-                                <ul>
-                                    <li>Vegetable’s Package <span>$75.99</span></li>
-                                    <li>Fresh Vegetable <span>$151.99</span></li>
-                                    <li>Organic Bananas <span>$53.99</span></li>
-                                </ul>
-                                <div class="checkout__order__subtotal">Subtotal <span>$750.99</span></div>
-                                <div class="checkout__order__total">Total <span>$750.99</span></div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adip elit, sed do eiusmod tempor incididunt
-                                    ut labore et dolore magna aliqua.</p>
-                                <button type="submit" class="site-btn">PLACE ORDER</button>
+                                <div class="checkout__order__products">Trips <span>Price</span></div>
+                                <?php 
+
+                                    $q = "SELECT trips.nome, trips.id, trips.preco, users_trips.quantidade from users_trips INNER JOIN trips ON trips.id=users_trips.trip_id WHERE `user_id`={$_SESSION['user_id']}";
+                                    $result = mysqli_query($conn,$q);
+    
+                                    foreach($result as $trip): ?>
+                                        <ul>
+                                            <li>
+                                                <?php echo $trip["nome"];?>
+                                                <span>
+                                                    <?php
+                                                        $price = $trip["quantidade"]*$trip["preco"];
+                                                        $total += $price;
+                                                        echo $price;
+                                                    ?>€
+                                                </span>
+                                            </li>
+                                        </ul>
+                                    <?php endforeach; ?>
+                                <div class="checkout__order__total">
+                                    <li>Total 
+                                        <span>
+                                            <?php 
+                                                echo $total; 
+                                            ?>€
+                                        </span>
+                                    </li>
+                                </div>
+                                <p>Lorem ipsum dolor sit amet, consectetur adip elit, sed do eiusmod ut labore et dolore magna aliqua.</p>
+                                <button type="submit" name="submit_btn" id="submit_btn" class="site-btn">PLACE ORDER</button>
                             </div>
+                            <?php
+                                if (isset($_POST['submit_btn'])){
+                                    if (!empty($_POST['fname']) && !empty($_POST['lname']) && !empty($_POST['country']) && !empty($_POST['address']) && !empty($_POST['state']) && !empty($_POST['city']) && !empty($_POST['zip']) && !empty($_POST['phone']) ){
+                                    //&& !empty($_POST['cardname']) && !empty($_POST['cardnumber']) && isset($_POST['cardtype']) && validateDate($_POST['exp']) && !empty($_POST['cvv'])
+                                        echo "<script> location.replace('order.php'); </script>";
+                                    } else {
+                                        echo "<div class=\"container-login100-form-btn\" ><p style=\" color: red\">Erro! Verifica q todos os campos estão corretamente preenchidos</p> </div>";
+                                    }
+                                }
+                            ?>
                         </div>
                     </div>
                 </form>

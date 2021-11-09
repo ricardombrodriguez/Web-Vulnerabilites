@@ -51,6 +51,7 @@ include("connection.php");
                 <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
                 <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
             </ul>
+            <div class="header__cart__price">item: <span>$150.00</span></div>
         </div>
         <div class="humberger__menu__widget">
             <div class="header__top__right__language">
@@ -119,120 +120,21 @@ include("connection.php");
             </div>
         </div>
     </header>
-    <!-- Header Section End -->
 
-    <!-- Hero Section Begin -->
-    <section class="hero">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="hero__item set-bg" data-setbg="img/banner/travel_HD.jpg">
-                        <div class="hero__text">
-                            <span>TRAVEL AGENCY</span>
-                            <h2>Travel <br />with pleasure.</h2>
-                            <p>The best choice for your trips.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Hero Section End -->
-
-     <!-- Hero Section Begin -->
-     <section class="hero hero-normal">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="hero__search" id="inner">
-                        <div class="hero__search__form">
-                            <form method="GET">
-                                <input type="text" placeholder="Where do you want to travel?" name="searchitem">
-                                <button type="submit" class="site-btn" style="text-align: center;" name="searchbtn">SEARCH</button>
-                                <?php
-                                    /* if (isset($_POST["searchitem"])) {
-                                        echo "SELECT * from trips where nome like '".$_POST["searchitem"]."%'";
-                                        $q = "SELECT * from trips where nome like '".$_POST["searchitem"]."%'";
-                                    } */
-
-                                ?>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Hero Section End -->
-
+	</div>
     <!-- Product table  -->
     <section class="ftco-section">
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center mb-5">
-					<h2 class="heading-section">Results</h2>
+					<h2 class="heading-section" style="text-align: center;">Your order has been placed!</h2>
+                    <h4 class="heading-section" style="text-align: center;">Check your e-mail for more information!</h4>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-md-12">
-					<div class="table-wrap">
-						<table class="table">
-					    <thead class="thead-primary">
-					      <tr>
-					        <th>ID</th>
-					        <th>Trip</th>
-					        <th>Location</th>
-					        <th>Price</th>
-                            <th>Score</th>
-					        <th>Details</th>
-					      </tr>
-					    </thead>
-					    <tbody>
-                        <?php
-
-                        if (isset($_GET["searchitem"])) {
-                            
-                            $q = "SELECT * from trips where lugar like '%".$_GET["searchitem"]."%'";
-                            $result = mysqli_query($conn,$q);
-
-                            if (!$result){
-                                echo("</table></div>".mysqli_error($conn));
-
-                            }
-                        }
-
-                        foreach($result as $row): ?>
-                            <tr>
-                                <form method="POST" name="trip" action="shop-details.php">
-                                    <th id="row_id" scope="row" class="scope border-bottom-0"><?php echo $row['id']; ?></th>
-                                    <td class="border-bottom-0" value="<?= $row['nome'] ?>"><?php echo $row['nome']; ?></td>
-                                    <td class="border-bottom-0" value="<?= $row['lugar'] ?>"><?php echo $row['lugar']; ?></td>
-                                    <td class="border-bottom-0" value="<?= $row['preco'] ?>"><?php echo $row['preco']; ?></td>
-                                    <td class="border-bottom-0"><?php echo $row['avaliacao']; ?></td>
-                                    <td class="border-bottom-0">
-                                        <input type="hidden" name="nome" value="<?= $row['nome'] ?>" />
-                                        <input type="hidden" name="preco" value="<?= $row['preco'] ?>" />
-                                        <input type="hidden" name="lugar" value="<?= $row['lugar'] ?>" />
-                                        <input type="hidden" name="avaliacao" value="<?= $row['avaliacao'] ?>" />
-                                        <input type="hidden" name="descricao" value="<?= $row['descricao'] ?>" />
-                                        <input type="hidden" name="trip_id" value="<?= $row['id'] ?>" />
-                                        <button type="submit" class="btn btn-primary" style="text-align: center;" name="see_more">Details</button>
-                                    </td>
-                                </form>
-					        </tr>
-
-                            
-                        <?php endforeach; ?>
-
-					    </tbody>
-					  </table>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-    <!-- Product table end  -->
-
+        </div>
+    </div>
+    
+    <!-- Header Section End -->
     <!-- Js Plugins -->
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>

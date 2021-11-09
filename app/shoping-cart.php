@@ -45,7 +45,6 @@ include("connection.php");
             <ul>
                 <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
             </ul>
-            <div class="header__cart__price">item: <span>$150.00</span></div>
         </div>
         <div class="humberger__menu__widget">
             <div class="header__top__right__language">
@@ -106,7 +105,6 @@ include("connection.php");
                             <li><a href="./index.php"><i class="fa fa-user"></i> <span></span></a></li>
                             <li><a href="./shoping-cart.php"><i class="fa fa-shopping-bag"></i> <span></span></a></li>
                         </ul>
-                        <div class="header__cart__price">item: <span>$150.00</span></div>
                     </div>
                 </div>
             </div>
@@ -144,6 +142,9 @@ include("connection.php");
                                 } 
 
                                 $total = 0;
+                                $_SESSION['total'] = $total; 
+                                $_SESSION['trip'] = $trip; 
+
                                 foreach($result as $trip): ?>
                                     <tr>
                                         <td class="shoping__cart__item">
@@ -225,9 +226,15 @@ include("connection.php");
                     <div class="shoping__checkout">
                         <h5>Cart Total</h5>
                         <ul>
-                            <li>Total <span><?php echo $total; ?>€</span></li>
+                            <li>Total 
+                                <span>
+                                    <?php 
+                                        echo $total;
+                                    ?>€
+                                </span>
+                            </li>
                         </ul>
-                        <a href="#" class="primary-btn">PROCEED TO CHECKOUT</a>
+                        <a href="checkout.php" class="primary-btn">PROCEED TO CHECKOUT</a>
                     </div>
                 </div>
             </div>
