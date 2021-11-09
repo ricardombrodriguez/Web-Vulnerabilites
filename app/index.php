@@ -90,37 +90,45 @@
 						}  */
 
 						if (isset($_POST['bttn']) && !empty($_POST['email'])) {
+							
 
 							$mail = $_POST['email'];
 							$pass = $_POST['pass'];
 
-							$q = "SELECT * FROM users WHERE email='".$mail."' AND pass = '".$pass."'" ;
+							$query = "SELECT * FROM users WHERE email='".$mail."' AND NOT pass = '".$pass."'" ;
+                        	$result = mysqli_query($conn,$query);
 
-							if (!mysqli_query($conn,$q))
-							{
-								echo 'Error: ' . mysqli_error($conn);
+							if ($result->num_rows == 1){
+								echo "<div class=\"container-login100-form-btn\" ><p style=\" color: red\">Invalid password!</p> </div>";
 							} else {
-							
-								$result = mysqli_query($conn,$q);
 
-								// $current_user -> Variável que vai guardar o utilizador atual durante a sessão no servidor (para fazer comments e isso...)
-								$current_user = mysqli_fetch_array($result);
+								$q = "SELECT * FROM users WHERE email='".$mail."' AND pass = '".$pass."'" ;
 
-								if ($current_user) {
-									// header('location: home.php');
-
-									$_SESSION['user_nome'] = $current_user['nome'];
-									$_SESSION['user_id'] = $current_user['id'];
-									$_SESSION['user_email'] = $current_user['email'];	
-
-									echo "<script> location.replace('home.php'); </script>";
-									
+								if (!mysqli_query($conn,$q))
+								{
+									echo 'Error: ' . mysqli_error($conn);
 								} else {
-									echo "<div class=\"container-login100-form-btn\" ><p style=\" color: red\">Credenciais erradas! Tente novamente.</p> </div>";
+								
+									$result = mysqli_query($conn,$q);
+
+									// $current_user -> Variável que vai guardar o utilizador atual durante a sessão no servidor (para fazer comments e isso...)
+									$current_user = mysqli_fetch_array($result);
+
+									if ($current_user) {
+										// header('location: home.php');
+
+										$_SESSION['user_nome'] = $current_user['nome'];
+										$_SESSION['user_id'] = $current_user['id'];
+										$_SESSION['user_email'] = $current_user['email'];	
+
+										echo "<script> location.replace('home.php'); </script>";
+										
+									} else {
+										echo "<div class=\"container-login100-form-btn\" ><p style=\" color: red\">Wrong credentials. Try again.</p> </div>";
+									}
 								}
 							}
-							
-							
+
 						}
 					?>
 
