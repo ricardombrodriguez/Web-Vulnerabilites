@@ -62,7 +62,6 @@ include("connection.php");
                 <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
                 <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
             </ul>
-            <div class="header__cart__price">item: <span>$150.00</span></div>
         </div>
         <div class="humberger__menu__widget">
             <div class="header__top__right__language">
@@ -123,7 +122,6 @@ include("connection.php");
                             <li><a href="./index.php"><i class="fa fa-user"></i> <span></span></a></li>
                             <li><a href="./shoping-cart.php"><i class="fa fa-shopping-bag"></i> <span></span></a></li>
                         </ul>
-                        <div class="header__cart__price">item: <span>$150.00</span></div>
                     </div>
                 </div>
             </div>
@@ -178,15 +176,55 @@ include("connection.php");
                         ?>
                         <div class="product__details__price"><?php echo $_SESSION['preco']; ?>€</div>
                         <p><?php echo $_SESSION['descricao']; ?></p>
-                        <div class="product__details__quantity">
-                            <div class="quantity">
-                                <div class="pro-qty">
-                                    <input type="text" value="1">
+
+                        <!-- Form para enviar dados da trip para o checkout + quantidade da mesma (adicionar ao carrinho) -->
+                        <form method="POST">
+                            <div class="product__details__quantity">
+                                <div class="quantity">
+                                    <div class="pro-qty">
+                                        <input type="text" name="quantidade" id="quantidade" value="<?php 
+                                            $q = "SELECT trips.nome, trips.id, trips.preco, users_trips.quantidade from users_trips INNER JOIN trips ON trips.id=users_trips.trip_id WHERE `user_id`={$_SESSION['user_id']}";
+                                            $result = mysqli_query($conn,$q);
+                                            if($result->num_rows == 1){
+                                                $row = $result->fetch_row();
+                                                echo $row[3];
+                                            } else {
+                                                echo "1";
+                                            }
+                                        ?>">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <a href="#" class="primary-btn">ADD TO CARD</a>
-                        <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
+                            <button name="add_to_cart" type="submit" class="primary-btn">ADD TO CARD</button>
+                        </form>
+                        <?php
+
+
+                            if (isset($_POST['add_to_cart'])) {
+
+                                $query = "SELECT * FROM users_trips WHERE `user_id`={$_SESSION['user_id']} AND trip_id={$_SESSION['id']}";
+                                $result = mysqli_query($conn,$query);
+                                if($result->num_rows != 0){
+                                    $query = "UPDATE users_trips SET quantidade={$_POST['quantidade']} WHERE `user_id`={$_SESSION['user_id']} AND trip_id={$_SESSION['id']}";
+                                    $result = mysqli_query($conn,$query);
+                                    if (!$result) {
+                                        echo "<div class=\"container-login100-form-btn\" ><p style=\" color: red\">ERROR in adding trip to cart. It already exists (go to shopping cart)</p> </div>";
+                                    } else {
+                                        echo "<div class=\"container-login100-form-btn\" ><p style=\" color: green\">Number of bookings updated!</p> </div>";
+                                    }
+                                } else {
+                                    $query = "INSERT INTO users_trips (`user_id`, trip_id, quantidade) VALUES ({$_SESSION['user_id']}, {$_SESSION['id']}, {$_POST['quantidade']})";
+                                    $result = mysqli_query($conn,$query);
+
+                                    if (!$result){
+                                        echo "<div class=\"container-login100-form-btn\" ><p style=\" color: red\">ERROR in adding trip to cart.</p> </div>";
+                                    } else {
+                                        echo "<script> location.replace('shoping-cart.php'); </script>";
+                                    }
+                                }
+                            }
+                        ?>
+
                     </div>
                 </div>
                 <div class="col-lg-12">
@@ -218,6 +256,20 @@ include("connection.php");
                                             
                                             <?php
 
+                                            // Define the target location where the picture being
+
+                                            // uploaded is going to be saved.
+/*                                             $target = "img/" . basename($_FILES['uploadedfile']['name']);
+
+                                            // Move the uploaded file to the new location.
+                                            if(move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target)) {
+                                                echo "The picture has been successfully uploaded.";
+
+                                            } else {
+                                                echo "There was an error uploading the picture, please try again.";
+                                            } */
+
+
                                         
                                             if (isset($_POST['comment'])) {
 
@@ -231,6 +283,7 @@ include("connection.php");
 
                                                 if (!$result){
                                                     echo "<div class=\"container-login100-form-btn\" ><p style=\" color: red\">Invalid comment.</p> </div>";
+
                                                 }
 
                                             }
