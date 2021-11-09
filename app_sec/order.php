@@ -1,4 +1,8 @@
-<!DOCTYPE php>
+<?php 
+session_start();
+include("connection.php");
+?>
+<!DOCTYPE html>
 <html lang="zxx">
 
 <head>
@@ -21,9 +25,16 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
+
+    <?php
+    $result = $conn->query("SELECT * FROM trips") or die($conn->error);
+    ?>
+
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
@@ -33,13 +44,14 @@
     <div class="humberger__menu__overlay"></div>
     <div class="humberger__menu__wrapper">
         <div class="humberger__menu__logo">
-            <a href="#"><img src="img/logo.png" height="30px" width="100px" alt=""></a>
+            <a href="#"><img src="img/logo.png" alt=""></a>
         </div>
         <div class="humberger__menu__cart">
             <ul>
                 <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
                 <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
             </ul>
+            <div class="header__cart__price">item: <span>$150.00</span></div>
         </div>
         <div class="humberger__menu__widget">
             <div class="header__top__right__language">
@@ -57,7 +69,7 @@
         </div>
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
-                <li><a href="./home.php">Home</a></li>
+                <li><a href="./index.php">Shop</a></li>
                 <li><a href="./contact.php">Contact</a></li>
             </ul>
         </nav>
@@ -82,14 +94,14 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
-                    <div class="header__logo">
-                        <a href="./home.php"><img src="img/logo.png" height="60px" alt=""></a>
+                    <div class="header__logo" >
+                        <a href="./index.php"><img src="img/logo.png" height="60px" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <nav class="header__menu">
                         <ul>
-                            <li><a href="./home.php">Home</a></li>
+                            <li class="active"><a href="./index.php">Shop</a></li>
                             <li><a href="./contact.php">Contact</a></li>
                         </ul>
                     </nav>
@@ -97,7 +109,7 @@
                 <div class="col-lg-3">
                     <div class="header__cart">
                         <ul>
-                            <li><a href="./login.php"><i class="fa fa-user"></i> <span></span></a></li>
+                            <li><a href="./index.php"><i class="fa fa-user"></i> <span></span></a></li>
                             <li><a href="./shoping-cart.php"><i class="fa fa-shopping-bag"></i> <span></span></a></li>
                         </ul>
                     </div>
@@ -108,58 +120,21 @@
             </div>
         </div>
     </header>
-    <!-- Header Section End -->
 
-    <!-- Contact Form Begin -->
-    <div class="contact-form spad" style="background-image=url('img/banner/banner.png')">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="contact__form__title">
-                        <h2>Leave us a message</h2>
-                    </div>
-                </div>
-            </div>
-            <form action="#" method="POST">
-                <div class="row">
-                    <div class="col-lg-6 col-md-6">
-                        <input type="text" placeholder="Your name">
-                    </div>
-                    <div class="col-lg-6 col-md-6">
-                        <input type="text" placeholder="Your Email"> <?php echo $_SESSION['email'];?>
-                    </div>
-                    <div class="col-lg-12 text-center">
-                        <textarea placeholder="Your message"></textarea>
-                    </div>
-                    <div class="col-lg-12 ">
-                        <div class="input-group mb-3">
-                            <input type="file" class="custom-file-input" id="fileToUpload">
-                            <label class="custom-file-label" for="fileToUpload">Choose file</label>
-                        </div>
-                    </div> 
-                    <div class="col-lg-12 text-center">
-                        <button type="submit" class="site-btn" name="bttn">SEND MESSAGE</button>
-                    </div>
-                </div>
-            </form>
+	</div>
+    <!-- Product table  -->
+    <section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+					<h2 class="heading-section" style="text-align: center;">Your order has been placed!</h2>
+                    <h4 class="heading-section" style="text-align: center;">Check your e-mail for more information!</h4>
+				</div>
+			</div>
         </div>
     </div>
-    <!-- Contact Form End -->
-
-    <?php 
-        /* if (isset($_POST['bttn'])) {  */
-            $target = $_SERVER['DOCUMENT_ROOT'] . "/uploads/" . basename($_FILES['fileToUpload']['name']);     
-            
-            echo "here ".basename($_FILES['fileToUpload']['name']);
-            
-            if(move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $target)){
-                echo "The picture has been successfully uploaded.";
-            } else {
-                echo "There was an error uploading the picture, please try again.";
-            }
-        /* } */
-    ?>
-
+    
+    <!-- Header Section End -->
     <!-- Js Plugins -->
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -173,5 +148,4 @@
 
 
 </body>
-
 </html>

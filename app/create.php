@@ -64,7 +64,6 @@
 							<button type="submit" class="login100-form-btn" style="width:290px" name="submit_btn">
 								Create
 							</button>
-
 					</div>
 
 					<?php

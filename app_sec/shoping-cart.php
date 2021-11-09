@@ -45,7 +45,6 @@ include("connection.php");
             <ul>
                 <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
             </ul>
-            <div class="header__cart__price">item: <span>$150.00</span></div>
         </div>
         <div class="humberger__menu__widget">
             <div class="header__top__right__language">
@@ -63,7 +62,7 @@ include("connection.php");
         </div>
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
-                <li><a href="./index.php">Shop</a></li>
+                <li><a href="./home.php">Shop</a></li>
                 <li><a href="./contact.php">Contact</a></li>
             </ul>
         </nav>
@@ -106,7 +105,6 @@ include("connection.php");
                             <li><a href="./index.php"><i class="fa fa-user"></i> <span></span></a></li>
                             <li><a href="./shoping-cart.php"><i class="fa fa-shopping-bag"></i> <span></span></a></li>
                         </ul>
-                        <div class="header__cart__price">item: <span>$150.00</span></div>
                     </div>
                 </div>
             </div>
@@ -126,37 +124,70 @@ include("connection.php");
                         <table>
                             <thead>
                                 <tr>
-                                    <th class="shoping__product">Products</th>
+                                    <th class="shoping__product">Trips</th>
                                     <th>Price</th>
-                                    <th>Quantity</th>
+                                    <th>Reserves</th>
                                     <th>Total</th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td class="shoping__cart__item">
-                                        <img src="img/cart/cart-1.jpg" alt="">
-                                        <h5>Vegetable’s Package</h5>
-                                    </td>
-                                    <td class="shoping__cart__price">
-                                        $55.00
-                                    </td>
-                                    <td class="shoping__cart__quantity">
-                                        <div class="quantity">
-                                            <div class="pro-qty">
-                                                <input type="text" value="1">
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="shoping__cart__total">
-                                        $110.00
-                                    </td>
-                                    <td class="shoping__cart__item__close">
-                                        <span class="icon_close"></span>
-                                    </td>
-                                </tr>
-                            
+                            <?php
+
+                                $q = "SELECT trips.nome, trips.id, trips.preco, users_trips.quantidade from users_trips INNER JOIN trips ON trips.id=users_trips.trip_id WHERE `user_id`={$_SESSION['user_id']}";
+                                $result = mysqli_query($conn,$q);
+
+                                if($result->num_rows == 0){
+                                    echo "<tr><td><p style=\" color: red\">You don't have a trip in your cart. Try adding one to proceed...</p> </td></tr>";
+                                } 
+
+                                $total = 0;
+                                $_SESSION['total'] = $total; 
+                                $_SESSION['trip'] = $trip; 
+
+                                foreach($result as $trip): ?>
+                                    <tr>
+                                        <td class="shoping__cart__item">
+                                            <img src="img/cart/cart-1.jpg" alt="">
+                                            <h5><?php echo $trip["nome"]; ?></h5>
+                                        </td>
+                                        <td class="shoping__cart__price">
+                                            <?php echo $trip["preco"]; ?>€
+                                        </td>
+                                        <td class="shoping__cart__quantity">
+                                            <?php echo $trip["quantidade"]; ?>
+                                        </td>
+                                        <td class="shoping__cart__total">
+                                            <?php
+                                                $price = $trip["quantidade"]*$trip["preco"];
+                                                $total += $price;
+                                                echo $price;
+                                            ?>€
+                                        </td>
+                                        <form method="GET" action="">
+                                            <td class="shoping__cart__item__close">
+                                                <input type="hidden" name="trip_id" value="<?= $trip['id'] ?>" />
+                                                <button type="submit" class="icon_close" name="icon_close"></button>
+                                            </td>
+                                        </form>
+                                        
+                                        <?php
+                                            if (isset($_GET['trip_id'])) {
+                                                $q = "DELETE FROM users_trips WHERE `user_id`={$_SESSION["user_id"]} AND trip_id={$_GET["trip_id"]}";
+                                                $result = mysqli_query($conn,$q);
+                                            
+                                                if (!$result){
+                                                    echo("</table></div>".mysqli_error($conn));
+                                            
+                                                } else {
+                                                    echo "<script> location.replace('shoping-cart.php'); </script>";
+                                                }
+                                            }
+                                        ?>
+
+                                    </tr>
+                                <?php endforeach; ?>
+
                             </tbody>
                         </table>
                     </div>
@@ -167,10 +198,27 @@ include("connection.php");
                     <div class="shoping__continue">
                         <div class="shoping__discount">
                             <h5>Discount Codes</h5>
-                            <form action="#">
-                                <input type="text" placeholder="Enter your coupon code">
+                            <form action="#" method="get">
+                                <input type="text" name="coupon" placeholder="Enter your coupon code">
                                 <button type="submit" class="site-btn">APPLY COUPON</button>
                             </form>
+                            <?php
+
+                                $coupons = array("SPOTON10", "NEWYEAR10", "XMAS10", "VALENTINES10", "ILOVESIO");
+
+                                if (isset($_GET['coupon'])) {
+                                    $input = $_GET['coupon'];
+                                    if (in_array($input, $coupons))
+                                    {
+                                        $total *= 0.9;
+                                        echo "<div><p style=\" color: green\">You applicated the coupon!</p> </div>";
+                                    }
+                                  else
+                                    {
+                                        echo "<div><p style=\" color: red\">Invalid coupon!</p> </div>";
+                                    }
+                                }
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -178,10 +226,15 @@ include("connection.php");
                     <div class="shoping__checkout">
                         <h5>Cart Total</h5>
                         <ul>
-                            <li>Subtotal <span>$454.98</span></li>
-                            <li>Total <span>$454.98</span></li>
+                            <li>Total 
+                                <span>
+                                    <?php 
+                                        echo $total;
+                                    ?>€
+                                </span>
+                            </li>
                         </ul>
-                        <a href="#" class="primary-btn">PROCEED TO CHECKOUT</a>
+                        <a href="checkout.php" class="primary-btn">PROCEED TO CHECKOUT</a>
                     </div>
                 </div>
             </div>
