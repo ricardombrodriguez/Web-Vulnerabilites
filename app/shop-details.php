@@ -157,7 +157,7 @@ include("connection.php");
                     <div class="product__details__pic">
                         <div class="product__details__pic__item">
                             <img class="product__details__pic__item--large"
-                                src="img/product/details/aveiro-foto-barco.jpg" alt="">
+                                src="img/product/<?php echo $_SESSION['id'] ?>.jpg" alt="">
                         </div>
                     </div>
                 </div>

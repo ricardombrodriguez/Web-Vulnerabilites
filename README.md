@@ -9,25 +9,25 @@ As linguagens de programação utilizadas neste projeto são em PHP (para back-e
 #
 ## Vulnerabilidades exploradas no projeto
 
-**CWE-79**: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')
+[X] **CWE-79**: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')
 
-**CWE-89**: Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')
+[X] **CWE-89**: Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')
 
-**CWE-256**: Plaintext Storage of a Password
+[X] **CWE-522**: Insufficiently Protected Credentials
 
-**CWE-521** Weak Password Requirements
+[X] **CWE-521** Weak Password Requirements
 
-**CWE-352**: Cross-Site Request Forgery (CSRF)
+[X] **CWE-352**: Cross-Site Request Forgery (CSRF)
 
-**CWE-494**: Download of Code Without Integrity Check
+[ ] **CWE-494**: Download of Code Without Integrity Check
 
-**CWE-20**: Improper Input Validation
+[X] **CWE-20**: Improper Input Validation
 
-**CWE-200**: Exposure of Sensitive Information to an Unauthorized Actor
+[ ] **CWE-200**: Exposure of Sensitive Information to an Unauthorized Actor
 
-**CWE-184**: Incomplete List of Disallowed Inputs
+[ ] **CWE-184**: Incomplete List of Disallowed Inputs
 
-**CWE-615**: Inclusion of Sensitive Information in Source Code Comments
+[ ] **CWE-615**: Inclusion of Sensitive Information in Source Code Comments
 
 #
 ## **Autores**

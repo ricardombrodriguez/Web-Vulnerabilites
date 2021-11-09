@@ -168,18 +168,12 @@ include("connection.php");
     <!-- Product table  -->
     <section class="ftco-section">
 		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col-md-6 text-center mb-5">
-					<h2 class="heading-section">Results</h2>
-				</div>
-			</div>
 			<div class="row">
 				<div class="col-md-12">
 					<div class="table-wrap">
 						<table class="table">
 					    <thead class="thead-primary">
 					      <tr>
-					        <th>ID</th>
 					        <th>Trip</th>
 					        <th>Location</th>
 					        <th>Price</th>
@@ -205,7 +199,6 @@ include("connection.php");
                         foreach($result as $row): ?>
                             <tr>
                                 <form method="POST" name="trip" action="shop-details.php">
-                                    <th id="row_id" scope="row" class="scope border-bottom-0"><?php echo $row['id']; ?></th>
                                     <td class="border-bottom-0" value="<?= $row['nome'] ?>"><?php echo $row['nome']; ?></td>
                                     <td class="border-bottom-0" value="<?= $row['lugar'] ?>"><?php echo $row['lugar']; ?></td>
                                     <td class="border-bottom-0" value="<?= $row['preco'] ?>"><?php echo $row['preco']; ?></td>

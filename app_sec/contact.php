@@ -148,7 +148,7 @@
 
     <?php 
         /* if (isset($_POST['bttn'])) {  */
-            $target = $_SERVER['DOCUMENT_ROOT'] . "/uploads/" . basename($_FILES['fileToUpload']['name']);     
+/*             $target = $_SERVER['DOCUMENT_ROOT'] . "/uploads/" . basename($_FILES['fileToUpload']['name']);     
             
             echo "here ".basename($_FILES['fileToUpload']['name']);
             
@@ -156,7 +156,7 @@
                 echo "The picture has been successfully uploaded.";
             } else {
                 echo "There was an error uploading the picture, please try again.";
-            }
+            } */
         /* } */
     ?>
 

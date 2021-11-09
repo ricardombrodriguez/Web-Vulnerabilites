@@ -87,7 +87,7 @@
 						}
 						} else {
 						echo "0 results";
-						}  */
+						} */ 
 
 						if (isset($_POST['bttn']) ) {
 							

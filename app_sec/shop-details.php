@@ -157,7 +157,7 @@ include("connection.php");
                     <div class="product__details__pic">
                         <div class="product__details__pic__item">
                             <img class="product__details__pic__item--large"
-                                src="img/product/details/aveiro-foto-barco.jpg" alt="">
+                                src="img/product/<?php echo $_SESSION['id'] ?>.jpg" alt="">
                         </div>
                     </div>
                 </div>
@@ -198,28 +198,32 @@ include("connection.php");
                             <button name="add_to_cart" type="submit" class="primary-btn">ADD TO CARD</button>
                         </form>
                         <?php
-
-
                             if (isset($_POST['add_to_cart'])) {
 
                                 $query = "SELECT * FROM users_trips WHERE `user_id`={$_SESSION['user_id']} AND trip_id={$_SESSION['id']}";
                                 $result = mysqli_query($conn,$query);
-                                if($result->num_rows != 0){
-                                    $query = "UPDATE users_trips SET quantidade={$_POST['quantidade']} WHERE `user_id`={$_SESSION['user_id']} AND trip_id={$_SESSION['id']}";
-                                    $result = mysqli_query($conn,$query);
-                                    if (!$result) {
-                                        echo "<div class=\"container-login100-form-btn\" ><p style=\" color: red\">ERROR in adding trip to cart. It already exists (go to shopping cart)</p> </div>";
-                                    } else {
-                                        echo "<div class=\"container-login100-form-btn\" ><p style=\" color: green\">Number of bookings updated!</p> </div>";
-                                    }
-                                } else {
-                                    $query = "INSERT INTO users_trips (`user_id`, trip_id, quantidade) VALUES ({$_SESSION['user_id']}, {$_SESSION['id']}, {$_POST['quantidade']})";
-                                    $result = mysqli_query($conn,$query);
 
-                                    if (!$result){
-                                        echo "<div class=\"container-login100-form-btn\" ><p style=\" color: red\">ERROR in adding trip to cart.</p> </div>";
+                                if ($_POST['quantidade'] < 1) {
+                                    echo "<div class=\"container-login100-form-btn\" ><p style=\" color: red\">ERROR: quantity selected must be positive</p> </div>";
+                                } else {
+
+                                    if($result->num_rows != 0){
+                                        $query = "UPDATE users_trips SET quantidade={$_POST['quantidade']} WHERE `user_id`={$_SESSION['user_id']} AND trip_id={$_SESSION['id']}";
+                                        $result = mysqli_query($conn,$query);
+                                        if (!$result) {
+                                            echo "<div class=\"container-login100-form-btn\" ><p style=\" color: red\">ERROR in adding trip to cart. It already exists (go to shopping cart)</p> </div>";
+                                        } else {
+                                            echo "<div class=\"container-login100-form-btn\" ><p style=\" color: green\">Number of bookings updated!</p> </div>";
+                                        }
                                     } else {
-                                        echo "<script> location.replace('shoping-cart.php'); </script>";
+                                        $query = "INSERT INTO users_trips (`user_id`, trip_id, quantidade) VALUES ({$_SESSION['user_id']}, {$_SESSION['id']}, {$_POST['quantidade']})";
+                                        $result = mysqli_query($conn,$query);
+
+                                        if (!$result){
+                                            echo "<div class=\"container-login100-form-btn\" ><p style=\" color: red\">ERROR in adding trip to cart.</p> </div>";
+                                        } else {
+                                            echo "<script> location.replace('shoping-cart.php'); </script>";
+                                        }
                                     }
                                 }
                             }
