@@ -14,7 +14,7 @@ if ($conn->connect_error) {
 // echo "Connected successfully";
 
 /////////////////// para imprimir dados da base de dados ///////////////////
-$sql = "SELECT * FROM users";
+/* $sql = "SELECT * FROM users";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -24,7 +24,7 @@ while($row = $result->fetch_assoc()) {
 }
 } else {
   echo "0 results";
-}  
+}   */
 
 // for ($num=14; $num <15; $num++){
 //   mysqli_query($conn, "DELETE from users WHERE id='$num'");
