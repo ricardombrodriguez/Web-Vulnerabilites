@@ -1,3 +1,8 @@
+<?php 
+session_start();
+include("connection.php");
+?>
+
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -7,7 +12,7 @@
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ogani | Template</title>
+    <title>Spoton</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
@@ -105,10 +110,9 @@
                 <div class="col-lg-3">
                     <div class="header__cart">
                         <ul>
-                            <li><a href="./index.php"><i class="fa fa-user"></i> <span></span></a></li>
-                            <li><a href="./shoping-cart.php"><i class="fa fa-shopping-bag"></i> <span></span></a></li>
+                            <li><a href="./index.php" style="color: green"><i class="fa fa-sign-out"></i> Logout</a></li>
+                            <li><a href="./shoping-cart.php" style="color: green"><i class="fa fa-shopping-cart"></i> Shopping Cart</a></li>
                         </ul>
-                        <div class="header__cart__price">item: <span>$150.00</span></div>
                     </div>
                 </div>
             </div>
@@ -136,12 +140,6 @@
     <!-- Checkout Section Begin -->
     <section class="checkout spad">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h6><span class="icon_tag_alt"></span> Have a coupon? <a href="#">Click here</a> to enter your code
-                    </h6>
-                </div>
-            </div>
             <div class="checkout__form">
                 <h4>Billing Details</h4>
                 <form action="#">
@@ -230,34 +228,33 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="checkout__input">
-                                <p>Order notes<span>*</span></p>
-                                <input type="text" placeholder="Notes about your order, e.g. special notes for delivery.">
-                            </div>
-                            <div class="checkout__input__checkbox">
-                                <a class="txt2" href="./create.php">
-                                    Don't have an account? Create now!
-                                </a>
-                            </div>
                         </div>
                         <div class="col-lg-4 col-md-6">
                             <div class="checkout__order">
                                 <h4>Your Order</h4>
-                                <div class="checkout__order__products">Products <span>Total</span></div>
+                                <div class="checkout__order__products">Bookings <span>Total</span></div>
                                 <ul>
-                                    <li>Vegetable’s Package <span>$75.99</span></li>
-                                    <li>Fresh Vegetable <span>$151.99</span></li>
-                                    <li>Organic Bananas <span>$53.99</span></li>
+                                <?php
+
+
+                                    $q = "SELECT trips.nome, trips.id, trips.preco, users_trips.quantidade from users_trips INNER JOIN trips ON trips.id=users_trips.trip_id WHERE `user_id`={$_SESSION['user_id']}";
+                                    $result = mysqli_query($conn,$q);
+
+                                    if (!$result){
+                                        echo "<div class=\"container-login100-form-btn\" ><p style=\" color: red\">ERROR</p> </div>";
+                                    }
+                                    foreach($result as $trip): ?>
+                                        <li><?php echo $trip["nome"]; ?> (x<?php echo $trip["quantidade"]; ?>)<span><?php echo $trip["preco"]; ?>€</span></li>
+                                    <?php endforeach; ?>
+                                        
                                 </ul>
-                                <div class="checkout__order__subtotal">Subtotal <span>$750.99</span></div>
-                                <div class="checkout__order__total">Total <span>$750.99</span></div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adip elit, sed do eiusmod tempor incididunt
-                                    ut labore et dolore magna aliqua.</p>
-                                <button type="submit" class="site-btn">PLACE ORDER</button>
+                                <div class="checkout__order__total">Total <span><?php echo $_SESSION["total_price"]; ?>€</span></div>
+                                <button type="submit" name="checkout" class="site-btn">PLACE ORDER</button>
                             </div>
                         </div>
                     </div>
                 </form>
+                
             </div>
         </div>
     </section>

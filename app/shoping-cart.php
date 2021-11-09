@@ -103,10 +103,9 @@ include("connection.php");
                 <div class="col-lg-3">
                     <div class="header__cart">
                         <ul>
-                            <li><a href="./index.php"><i class="fa fa-user"></i> <span></span></a></li>
-                            <li><a href="./shoping-cart.php"><i class="fa fa-shopping-bag"></i> <span></span></a></li>
+                            <li><a href="./index.php" style="color: green"><i class="fa fa-sign-out"></i> Logout</a></li>
+                            <li><a href="./shoping-cart.php" style="color: green"><i class="fa fa-shopping-cart"></i> Shopping Cart</a></li>
                         </ul>
-                        <div class="header__cart__price">item: <span>$150.00</span></div>
                     </div>
                 </div>
             </div>
@@ -163,7 +162,7 @@ include("connection.php");
                                                 echo $price;
                                             ?>€
                                         </td>
-                                        <form method="GET" action="">
+                                        <form method="POST" action="">
                                             <td class="shoping__cart__item__close">
                                                 <input type="hidden" name="trip_id" value="<?= $trip['id'] ?>" />
                                                 <button type="submit" class="icon_close" name="icon_close"></button>
@@ -171,8 +170,8 @@ include("connection.php");
                                         </form>
                                         
                                         <?php
-                                            if (isset($_GET['trip_id'])) {
-                                                $q = "DELETE FROM users_trips WHERE `user_id`={$_SESSION["user_id"]} AND trip_id={$_GET["trip_id"]}";
+                                            if (isset($_POST['trip_id'])) {
+                                                $q = "DELETE FROM users_trips WHERE `user_id`={$_SESSION["user_id"]} AND trip_id={$_POST["trip_id"]}";
                                                 $result = mysqli_query($conn,$q);
                                             
                                                 if (!$result){
@@ -227,7 +226,21 @@ include("connection.php");
                         <ul>
                             <li>Total <span><?php echo $total; ?>€</span></li>
                         </ul>
-                        <a href="#" class="primary-btn">PROCEED TO CHECKOUT</a>
+                        <form method="POST">
+                            <input type="hidden" name="user_id" value="<?= $_SESSION["user_id"] ?>" />
+                            <input type="hidden" name="total_price" value="<?= $total ?>" />
+                            <button type="submit" name="checkout" class="primary-btn">PROCEED TO CHECKOUT</a>
+                        </form>
+                        <?php
+                            $_SESSION["total_price"] = $total;
+                            if (isset($_POST['user_id'])) {
+                                if ($total == 0) {
+                                    echo "<div><p style=\" color: red\">Can't proceed to checkout. You have no selected trips.</p> </div>";
+                                } else {
+                                    echo "<script> location.replace('checkout.php'); </script>";
+                                }
+                            }
+                        ?>
                     </div>
                 </div>
             </div>

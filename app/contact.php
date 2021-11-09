@@ -1,3 +1,9 @@
+<?php 
+session_start();
+include("connection.php");
+?>
+
+
 <!DOCTYPE php>
 <html lang="zxx">
 
@@ -98,10 +104,9 @@
                 <div class="col-lg-3">
                     <div class="header__cart">
                         <ul>
-                            <li><a href="./login.php"><i class="fa fa-user"></i> <span></span></a></li>
-                            <li><a href="./shoping-cart.php"><i class="fa fa-shopping-bag"></i> <span></span></a></li>
+                            <li><a href="./index.php" style="color: green"><i class="fa fa-sign-out"></i> Logout</a></li>
+                            <li><a href="./shoping-cart.php" style="color: green"><i class="fa fa-shopping-cart"></i> Shopping Cart</a></li>
                         </ul>
-                        <div class="header__cart__price">item: <span>$150.00</span></div>
                     </div>
                 </div>
             </div>
