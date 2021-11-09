@@ -69,18 +69,18 @@
 					<?php
 						if (isset($_POST['submit_btn'])){
 
-							$n = false;
+							// $n = false;
 							$e = false;
 							$p = false;
 								
 							// validar nome
-							if (!empty($_POST['name']) && preg_match("/^[a-zA-Z-' ]*$/", $_POST['name'])){
+/* 							if (!empty($_POST['name']) && preg_match("/^[a-zA-Z-' ]*$/", $_POST['name'])){
 								$name = $_POST['name'];
 								$n = true;
 								
 							} else {
 								echo "<div class=\"container-login100-form-btn\" ><p style=\" color: red\">Error! Invalid name (Only letters and white space is allowed)</p> </div>";
-							}
+							} */
 
 							// validar email valido
 							if (!empty($_POST['email']) && filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
@@ -103,7 +103,8 @@
 								$p = true;
 							}
 							
-							if ($n && $e && $p){
+							// if ($n && $e && $p){
+							if ($e && $p){
 								// Use prepared statements to mitigate SQL injection attacks.
 								$sql = "INSERT INTO `users` (`nome`, `email`, `pass`) VALUES ('$name', '$email', '$pass')";
 								$result = mysqli_query($conn, $sql);	
