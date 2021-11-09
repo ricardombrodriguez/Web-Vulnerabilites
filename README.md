@@ -1,6 +1,36 @@
-# Projeto SIO 21/22 - Agência de viagens
+# Primeiro projeto de SIO 2021/2022
 
-### **Equipa**
+## Descrição do projeto
+
+Com o intuito de explorar e prevenir vulnerabilidades em projetos de software, foi desenvolvida um Web site de uma agência de viagens, denominada Spoton.
+Neste site é possível fazer login, caso o utilizador já tenha uma conta, caso contrário, terá que se registar. Para além disto, na página principal, é possível pesquisar sobre as várias viagens disponiveis e ver mais detalhes sobre as mesmas. Na página de detalhes, pode-se adicionar a viagem ao carrinho e fazer comentários sobre a mesma viagem. Após o utilizador escolher as viagens que pretende adquirir, passará para a compra dos mesmos, onde pode inserir códigos de desconto.
+As linguagens de programação utilizadas neste projeto são em PHP (para back-end), HTML e CSS (para o front-end) e MySQL (para a base de dados). Para fazer a ligação site - base de dados utilizamos as potencialidades do Docker.
+
+#
+## Vulnerabilidades exploradas no projeto
+
+**CWE-79**: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')
+
+**CWE-89**: Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')
+
+**CWE-256**: Plaintext Storage of a Password
+
+**CWE-521** Weak Password Requirements
+
+**CWE-352**: Cross-Site Request Forgery (CSRF)
+
+**CWE-494**: Download of Code Without Integrity Check
+
+**CWE-20**: Improper Input Validation
+
+**CWE-200**: Exposure of Sensitive Information to an Unauthorized Actor
+
+**CWE-184**: Incomplete List of Disallowed Inputs
+
+**CWE-615**: Inclusion of Sensitive Information in Source Code Comments
+
+#
+## **Autores**
 
 | NMEC  | Name              |                   email  |
 | ----- | ----------------- | -----------------------: |
@@ -8,65 +38,3 @@
 | 98595 | Diogo Cruz        |         diogophc@ua.pt   |
 | 98388 | Ricardo Rodriguez | ricardorodriguez@ua.pt   |
 | 93310 | Gonçalo Pereira   |  pereira.goncalo@ua.pt   |
-
-## Possíveis vulnerabilidades a explorar
-
-* **CWE-20** Improper Input Validation
-* **CWE-79** Cross-site Scripting
-* **CWE-89** SQL Injection
-* **CWE-200** Exposure of Sensitive Information to an Unauthorized Actor
-* **CWE-257** Storing Passwords in a Recoverable Format
-* **CWE-259** Use of Hard-coded Password
-* **CWE-321** Use of Hard-coded Cryptographic Key
-* **CWE-362** Race Condition
-* **CWE-434** Unrestricted Upload of File with Dangerous Type
-* **CWE-476** NULL Pointer Dereference
-* **CWE-521** Weak Password Requirements
-* **CWE-522** Insufficiently Protected Credentials
-* **CWE-601** URL Redirection to Untrusted Site ('Open Redirect')
-* **CWE-798** Use of Hard-coded Credentials
-
-## **SQL Database**
-
-Entidades
-
-* utilizador {*id, nome, password, mail*}
-* viagem {*id, nome, preco, descricao, local, avaliacao*}
-
-## Páginas
-
-* Viagens (tabela de viagens, pode sofrer sql injection)
-* Detalhes viagem (página especifica da viagem, pode ter comentários para fazer injeção de html/js???)
-* Login (sql injection ou problemas de autenticação??, hash functions)
-* Contato (injeção de html/js)
-
-## Possíveis páginas
-
-* Shopping cart (podemos mexer com injeção de html/js ou criptografia, pq pode ter dados bancários e isso)
-Códigos de cupão (dentro da shopping cart)
-
-* CWE-79 : Cross-site Scripting
-* CWE-89 : SQL Injection
-* CWE-798 : Use of Hard-coded Credentials
-* CWE-434 : Unrestricted Upload of File with Dangerous Type
-* CWE-601 : URL Redirection to Untrusted Site ('Open Redirect')
-* CWE-259 : Use of Hard-coded Password
-* CWE-476 : NULL Pointer Dereference
-* CWE-257 : Storing Passwords in a Recoverable Format
-
-## CWE resolvidas
-
-* CWE-79 : Cross-site Scripting
-* CWE-89 : SQL Injection
-* CWE-256: Plaintext Storage of a Password
-* CWE-352: Cross-Site Request Forgery (CSRF)
-
-# Docker
-
-1)
-
-```
-docker-compose up
-```
-
-2) Aceder <http://localhost:5000/>

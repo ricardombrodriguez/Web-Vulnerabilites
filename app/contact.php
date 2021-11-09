@@ -135,18 +135,32 @@
                     </div>
                     <div class="col-lg-12 ">
                         <div class="input-group mb-3">
-                            <input type="file" class="custom-file-input" id="inputGroupFile01">
-                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                            <input type="file" class="custom-file-input" id="fileToUpload">
+                            <label class="custom-file-label" for="fileToUpload">Choose file</label>
                         </div>
-                    </div>
+                    </div> 
                     <div class="col-lg-12 text-center">
-                        <button type="submit" class="site-btn">SEND MESSAGE</button>
+                        <button type="submit" class="site-btn" name="bttn">SEND MESSAGE</button>
                     </div>
                 </div>
             </form>
         </div>
     </div>
     <!-- Contact Form End -->
+
+    <?php 
+        /* if (isset($_POST['bttn'])) {  */
+            $target = $_SERVER['DOCUMENT_ROOT'] . "/uploads/" . basename($_FILES['fileToUpload']['name']);     
+            
+            echo "here ".basename($_FILES['fileToUpload']['name']);
+            
+            if(move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $target)){
+                echo "The picture has been successfully uploaded.";
+            } else {
+                echo "There was an error uploading the picture, please try again.";
+            }
+        /* } */
+    ?>
 
     <!-- Js Plugins -->
     <script src="js/jquery-3.3.1.min.js"></script>
