@@ -91,41 +91,31 @@
 
 						if (isset($_POST['bttn']) ) {
 							
-
 							$mail = mysqli_real_escape_string($conn, $_POST['email']);
 							$pass = md5(mysqli_real_escape_string($conn, $_POST['pass']));
 
-							$query = "SELECT * FROM users WHERE email='".$mail."' AND NOT pass = '".$pass."'" ;
+							$query = "SELECT * FROM users WHERE email='".$mail."' AND pass = '".$pass."'" ;
                         	$result = mysqli_query($conn,$query);
 
-							if ($result->num_rows == 1){
-								echo "<div class=\"container-login100-form-btn\" ><p style=\" color: red\">Invalid password!</p> </div>";
+							if (!$result){
+
+								echo "<div class=\"container-login100-form-btn\" ><p style=\" color: red\">Wrong credentials. Try again.</p> </div>";
+
 							} else {
 
-								$q = "SELECT * FROM users WHERE email='".$mail."' AND pass = '".$pass."'" ;
+								$current_user = mysqli_fetch_array($result);
 
-								if (!mysqli_query($conn,$q))
-								{
-									echo 'Error: ' . mysqli_error($conn);
+								if ($current_user) {
+									// header('location: home.php');
+
+									$_SESSION['user_nome'] = $current_user['nome'];
+									$_SESSION['user_id'] = $current_user['id'];
+									$_SESSION['user_email'] = $current_user['email'];	
+
+									echo "<script> location.replace('home.php'); </script>";
+									
 								} else {
-								
-									$result = mysqli_query($conn,$q);
-
-									// $current_user -> Variável que vai guardar o utilizador atual durante a sessão no servidor (para fazer comments e isso...)
-									$current_user = mysqli_fetch_array($result);
-
-									if ($current_user) {
-										// header('location: home.php');
-
-										$_SESSION['user_nome'] = $current_user['nome'];
-										$_SESSION['user_id'] = $current_user['id'];
-										$_SESSION['user_email'] = $current_user['email'];	
-
-										echo "<script> location.replace('home.php'); </script>";
-										
-									} else {
-										echo "<div class=\"container-login100-form-btn\" ><p style=\" color: red\">Wrong credentials. Try again.</p> </div>";
-									}
+									echo "<div class=\"container-login100-form-btn\" ><p style=\" color: red\">ERROR.</p> </div>";
 								}
 							}
 
