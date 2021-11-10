@@ -273,9 +273,13 @@ include("connection.php");
                                         
                                             if (isset($_POST['comment'])) {
 
-                                                $query = "INSERT INTO comment (trip, autor, texto) VALUES ({$_SESSION['id']}, {$_SESSION['user_id']}, {'".$_POST['comment']."'})";
+                                                $id = $_SESSION['id'];
+                                                $user_id = $_SESSION['user_id'];
+                                                $comment =  $_POST['comment'];
+
+                                                $query = "INSERT INTO `comment` (`trip`, `autor`, `texto`) VALUES ('$id', '$user_id', '$comment')";
                     
-                                                $result = mysqli_query($conn,$query);
+                                                $result = mysqli_query($conn, $query);
 
                                                 if (!$result){
                                                     echo "<div class=\"container-login100-form-btn\" ><p style=\" color: red\">Invalid comment.</p> </div>";

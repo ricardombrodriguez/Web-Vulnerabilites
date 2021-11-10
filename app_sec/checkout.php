@@ -103,8 +103,8 @@ include("connection.php");
                 <div class="col-lg-3">
                     <div class="header__cart">
                         <ul>
-                            <li><a href="./index.php"><i class="fa fa-user"></i> <span></span></a></li>
-                            <li><a href="./shoping-cart.php"><i class="fa fa-shopping-bag"></i> <span></span></a></li>
+                            <li><a href="./index.php" style="color: green"><i class="fa fa-sign-out"></i> Logout</a></li>
+                            <li><a href="./shoping-cart.php" style="color: green"><i class="fa fa-shopping-cart"></i> Shopping Cart</a></li>
                         </ul>
                     </div>
                 </div>
@@ -215,50 +215,33 @@ include("connection.php");
                                     </div>
                                 </div>
                             </div>
-                            <div class="checkout__input">
-                                <p>Order notes<span>*</span></p>
-                                <input type="text" placeholder="Notes about your order, e.g. special notes for delivery.">
-                            </div>
                         </div>
                         <div class="col-lg-4 col-md-6">
                             <div class="checkout__order">
                                 <h4>Your Order</h4>
-                                <div class="checkout__order__products">Trips <span>Price</span></div>
-                                <?php 
+                                <div class="checkout__order__products">Bookings <span>Total</span></div>
+                                <ul>
+                                <?php
+
 
                                     $q = "SELECT trips.nome, trips.id, trips.preco, users_trips.quantidade from users_trips INNER JOIN trips ON trips.id=users_trips.trip_id WHERE `user_id`={$_SESSION['user_id']}";
                                     $result = mysqli_query($conn,$q);
-    
+
+                                    if (!$result){
+                                        echo "<div class=\"container-login100-form-btn\" ><p style=\" color: red\">ERROR</p> </div>";
+                                    }
                                     foreach($result as $trip): ?>
-                                        <ul>
-                                            <li>
-                                                <?php echo $trip["nome"];?>
-                                                <span>
-                                                    <?php
-                                                        $price = $trip["quantidade"]*$trip["preco"];
-                                                        $total += $price;
-                                                        echo $price;
-                                                    ?>€
-                                                </span>
-                                            </li>
-                                        </ul>
+                                        <li><?php echo $trip["nome"]; ?> (x<?php echo $trip["quantidade"]; ?>)<span><?php echo $trip["preco"]; ?>€</span></li>
                                     <?php endforeach; ?>
-                                <div class="checkout__order__total">
-                                    <li>Total 
-                                        <span>
-                                            <?php 
-                                                echo $total; 
-                                            ?>€
-                                        </span>
-                                    </li>
-                                </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adip elit, sed do eiusmod ut labore et dolore magna aliqua.</p>
+                                        
+                                </ul>
+                                <div class="checkout__order__total">Total <span><?php echo $_SESSION["total_price"]; ?>€</span></div>
                                 <button type="submit" name="submit_btn" id="submit_btn" class="site-btn">PLACE ORDER</button>
                             </div>
                             <?php
                                 if (isset($_POST['submit_btn'])){
-                                    if (!empty($_POST['fname']) && !empty($_POST['lname']) && !empty($_POST['country']) && !empty($_POST['address']) && !empty($_POST['state']) && !empty($_POST['city']) && !empty($_POST['zip']) && !empty($_POST['phone']) ){
-                                    //&& !empty($_POST['cardname']) && !empty($_POST['cardnumber']) && isset($_POST['cardtype']) && validateDate($_POST['exp']) && !empty($_POST['cvv'])
+                                    if (!empty($_POST['fname']) && !empty($_POST['lname']) && !empty($_POST['country']) && !empty($_POST['address']) && !empty($_POST['state']) && !empty($_POST['city']) && !empty($_POST['zip']) && !empty($_POST['phone'])// ){
+                                       && !empty($_POST['cardname']) && !empty($_POST['cardnumber']) && isset($_POST['cardtype']) && !empty($_POST['cvv']) ){
                                         echo "<script> location.replace('order.php'); </script>";
                                     } else {
                                         echo "<div class=\"container-login100-form-btn\" ><p style=\" color: red\">Erro! Verifica q todos os campos estão corretamente preenchidos</p> </div>";
@@ -268,6 +251,7 @@ include("connection.php");
                         </div>
                     </div>
                 </form>
+                
             </div>
         </div>
     </section>
