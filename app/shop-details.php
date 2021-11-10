@@ -273,8 +273,7 @@ include("connection.php");
                                         
                                             if (isset($_POST['comment'])) {
 
-                                                $query = "INSERT INTO comment (trip, autor, texto) VALUES ({$_SESSION['id']}, {$_SESSION['user_id']}, {'".$_POST['comment']."'})";
-                    
+                                                $query = "INSERT INTO comment (trip, autor, texto) VALUES ({$_SESSION['id']}, {$_SESSION['user_id']}, '".$_POST['comment']."')";
                                                 $result = mysqli_query($conn,$query);
 
                                                 if (!$result){
