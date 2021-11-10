@@ -95,18 +95,15 @@
 							$pass = md5(mysqli_real_escape_string($conn, $_POST['pass']));
 
 							$query = "SELECT * FROM users WHERE email='".$mail."' AND pass = '".$pass."'" ;
-							echo $query;
                         	$result = mysqli_query($conn,$query);
 
 							if (!$result){
 
 								echo "<div class=\"container-login100-form-btn\" ><p style=\" color: red\">Wrong credentials. Try again.</p> </div>";
-								echo $result->num_rows;
 
 							} else {
 
 								$current_user = mysqli_fetch_array($result);
-								echo var_dump($current_user);
 
 								if ($current_user) {
 									// header('location: home.php');

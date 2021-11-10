@@ -19,15 +19,9 @@ As linguagens de programação utilizadas neste projeto são em PHP (para back-e
 
 [X] **CWE-352**: Cross-Site Request Forgery (CSRF)
 
-[ ] **CWE-494**: Download of Code Without Integrity Check
-
 [X] **CWE-20**: Improper Input Validation
 
-[ ] **CWE-200**: Exposure of Sensitive Information to an Unauthorized Actor
-
-[ ] **CWE-184**: Incomplete List of Disallowed Inputs
-
-[ ] **CWE-615**: Inclusion of Sensitive Information in Source Code Comments
+[X] **CWE-200**: Exposure of Sensitive Information to an Unauthorized Actor
 
 #
 ## **Autores**
