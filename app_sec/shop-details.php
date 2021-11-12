@@ -261,11 +261,13 @@ include("connection.php");
                                             <?php
                                             if (isset($_POST['comment'])) {
 
+                                                $id = $_SESSION['id'];
+                                                $user_id = $_SESSION['user_id'];
                                                 $temp = $_POST['comment'];
 
                                                 $comment = htmlspecialchars($temp, ENT_QUOTES, 'UTF-8');
 
-                                                $query = "INSERT INTO comment (trip, autor, texto) VALUES ({$_SESSION['id']}, {$_SESSION['user_id']}, '".$comment."')";
+                                                $query = "INSERT INTO `comment` (`trip`, `autor`, `texto`) VALUES ('$id', '$user_id', '$comment')";
                     
                                                 $result = mysqli_query($conn,$query);
 

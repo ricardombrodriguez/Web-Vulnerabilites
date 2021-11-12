@@ -236,12 +236,12 @@ include("connection.php");
                                         
                                 </ul>
                                 <div class="checkout__order__total">Total <span><?php echo $_SESSION["total_price"]; ?>€</span></div>
-                                <button type="submit" name="checkout" class="site-btn">PLACE ORDER</button>
+                                <button type="submit" name="submit_btn" id="submit_btn" class="site-btn">PLACE ORDER</button>
                             </div>
                             <?php
                                 if (isset($_POST['submit_btn'])){
-                                    if (!empty($_POST['fname']) && !empty($_POST['lname']) && !empty($_POST['country']) && !empty($_POST['address']) && !empty($_POST['state']) && !empty($_POST['city']) && !empty($_POST['zip']) && !empty($_POST['phone']) ){
-                                    //&& !empty($_POST['cardname']) && !empty($_POST['cardnumber']) && isset($_POST['cardtype']) && validateDate($_POST['exp']) && !empty($_POST['cvv'])
+                                    if (!empty($_POST['fname']) && !empty($_POST['lname']) && !empty($_POST['country']) && !empty($_POST['address']) && !empty($_POST['state']) && !empty($_POST['city']) && !empty($_POST['zip']) && !empty($_POST['phone'])// ){
+                                       && !empty($_POST['cardname']) && !empty($_POST['cardnumber']) && isset($_POST['cardtype']) && !empty($_POST['cvv']) ){
                                         echo "<script> location.replace('order.php'); </script>";
                                     } else {
                                         echo "<div class=\"container-login100-form-btn\" ><p style=\" color: red\">Erro! Verifica q todos os campos estão corretamente preenchidos</p> </div>";
